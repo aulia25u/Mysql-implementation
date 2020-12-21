@@ -1,9 +1,33 @@
 <!DOCTYPE html>
 <html>
 <head>
+<!--===============================================================================================-->	
+<link rel="icon" type="image/png" href="images/icons/favicon.ico"/>
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="vendor/animate/animate.css">
+<!--===============================================================================================-->	
+	<link rel="stylesheet" type="text/css" href="vendor/css-hamburgers/hamburgers.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="vendor/select2/select2.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="css/util.css">
+	<link rel="stylesheet" type="text/css" href="css/main.css">
+<!--===============================================================================================-->
     <meta charset="utf-8"/>
-    <title>Registration</title>
+    <title>Register</title>
     <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+<div class="limiter">
+		<div class="container-login100">
+			<div class="wrap-login100">
+				<div class="login100-pic js-tilt" data-tilt>
+					<img src="images/img-01.png" alt="IMG">
+				</div>
 </head>
 <body>
 <?php
@@ -23,26 +47,53 @@
                      VALUES ('$username', '" . md5($password) . "', '$email', '$create_datetime')";
         $result   = mysqli_query($con, $query);
         if ($result) {
-            echo "<div class='form'>
+            echo "<div class='login100-form'>
                   <h3>You are registered successfully.</h3><br/>
                   <p class='link'>Click here to <a href='login.php'>Login</a></p>
                   </div>";
         } else {
-            echo "<div class='form'>
+            echo "<div class='login100-form'>
                   <h3>Required fields are missing.</h3><br/>
                   <p class='link'>Click here to <a href='registration.php'>registration</a> again.</p>
                   </div>";
         }
     } else {
 ?>
-    <form class="form" action="" method="post">
-        <h1 class="login-title">Registration</h1>
-        <input type="text" class="login-input" name="username" placeholder="Username" required />
-        <input type="text" class="login-input" name="email" placeholder="Email Adress">
-        <input type="password" class="login-input" name="password" placeholder="Password">
-        <input type="submit" name="submit" value="Register" class="login-button">
-        <p class="link"><a href="login.php">Click to Login</a></p>
-    </form>
+    <form class="login100-form validate-form" method="post" name="login">
+	<span class="login100-form-title">
+						Member Registration
+					</span>
+       
+	   <div class="wrap-input100 validate-input" data-validate = "Username Is Required">
+						<input class="input100" type="text" name="username" placeholder="Username">
+						<span class="focus-input100"></span>
+						<span class="symbol-input100">
+							<i class="fa fa-user" aria-hidden="true"></i>
+						</span>
+					</div>
+        <div class="wrap-input100 validate-input" data-validate = "Email Is Required">
+						<input class="input100" type="text" name="email" placeholder="Email">
+						<span class="focus-input100"></span>
+						<span class="symbol-input100">
+							<i class="fa fa-user" aria-hidden="true"></i>
+						</span>
+					</div>          
+	   
+      <div class="wrap-input100 validate-input" data-validate = "Password is required">
+						<input class="input100" type="password" name="password" placeholder="Password">
+						<span class="focus-input100"></span>
+						<span class="symbol-input100">
+							<i class="fa fa-lock" aria-hidden="true"></i>
+						</span>
+					</div>
+					
+					<div class="container-login100-form-btn">
+						<button class="login100-form-btn" type="submit" value="Register" name="submit">
+							Register
+						</button>
+					</div>
+
+  </form>
 <?php
     }
 ?>
