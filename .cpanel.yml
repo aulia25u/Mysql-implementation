@@ -1,0 +1,5 @@
+---
+deployment:
+  tasks:
+    - export DEPLOYPATH=/home/academia/public_html/tugas/
+    - /bin/cp * $DEPLOYPATH
