@@ -49,12 +49,20 @@
         if ($result) {
             echo "<div class='login100-form'>
                   <h3>You are registered successfully.</h3><br/>
-                  <p class='link'>Click here to <a href='login.php'>Login</a></p>
+                  <form action='login.php'>
+						<button class='login100-form-btn' href='login.php' >
+							Login Again
+						</button>
+						</form>
                   </div>";
         } else {
             echo "<div class='login100-form'>
                   <h3>Required fields are missing.</h3><br/>
-                  <p class='link'>Click here to <a href='registration.php'>registration</a> again.</p>
+                  <form action='login.php'>
+						<button class='login100-form-btn' href='registration.php' >
+							Registration
+						</button>
+						</form>
                   </div>";
         }
     } else {
