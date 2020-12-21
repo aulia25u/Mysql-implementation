@@ -51,7 +51,7 @@
                   <h3>You are registered successfully.</h3><br/>
                   <form action='login.php'>
 						<button class='login100-form-btn' href='login.php' >
-							Login Again
+							Login
 						</button>
 						</form>
                   </div>";
