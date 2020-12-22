@@ -45,12 +45,12 @@ if (!$email) {
 }
   }
    if($error!=""){
-   echo "<div class='login100-form'>".$error."</div>
+   echo "<div class='login100-form'>".$error."
    <form action='recovery.php'>
 		 <button class='login100-form-btn' href='recovery.php' >
 			 Recovery Again
 		 </button>
-		 </form>";
+		 </form></div>";
    }else{
    $expFormat = mktime(
    date("H"), date("i"), date("s"), date("m") ,date("d")+1, date("Y")
