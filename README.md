@@ -2,6 +2,12 @@
 
 Mempelajari dan mengimplementasikan penggunaan basis data Mysql dengan menggunakan tampilan antarmuka berupa website.
 
+## Anggota Kelompok :
+1. Aulia Rahman
+2. Dewi Intan S
+3. Hanif Kukuh Raharjo
+4. Izzu Zantya Fawwas
+
 ## Referensi Kode Pemograman :
 1. Create a Registration and Login System with PHP and MySQL
     https://speedysense.com/create-registration-login-system-php-mysql
