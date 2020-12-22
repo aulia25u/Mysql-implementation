@@ -22,12 +22,7 @@
     <link rel="stylesheet" href="style.css"/>
 </head>
 <body>
-<div class="limiter">
-		<div class="container-login100">
-			<div class="wrap-login100">
-				<div class="login100-pic js-tilt" data-tilt>
-					<img src="images/img-02.png" alt="IMG">
-				</div>
+
 
 <?php
 include('db.php');
@@ -110,6 +105,13 @@ echo "<div class='login100-form'>
    }
 }else{
 ?>
+
+<div class="limiter">
+		<div class="container-login100">
+			<div class="wrap-login100">
+				<div class="login100-pic js-tilt" data-tilt>
+					<img src="images/img-02.png" alt="IMG">
+				</div>
     <form class="login100-form validate-form" method="post" name="reset">
 	<span class="login100-form-title">
 						Member Recovery
