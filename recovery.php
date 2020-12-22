@@ -28,50 +28,7 @@
 				<div class="login100-pic js-tilt" data-tilt>
 					<img src="images/img-01.png" alt="IMG">
 				</div>
-<?php
-    require('db.php');
-    session_start();
-    // When form submitted, check and create user session.
-    if (isset($_POST['username'])) {
-        $username = stripslashes($_REQUEST['username']);    // removes backslashes
-        $username = mysqli_real_escape_string($con, $username);
-        $password = stripslashes($_REQUEST['password']);
-        $password = mysqli_real_escape_string($con, $password);
-        // Check user is exist in the database
-        $query    = "SELECT * FROM `users` WHERE username='$username'
-                     AND password='" . md5($password) . "'";
-        $result = mysqli_query($con, $query) or die(mysql_error());
-        $rows = mysqli_num_rows($result);
-        if ($rows == 1) {
-            $_SESSION['username'] = $username;
-            // Redirect to user dashboard page
-            header("Location: index.php");
-        } else {
-            echo "<div class='login100-form'>
-			<br>
-                  <h3>Incorrect Username/password.</h3><br/>
-				  <br>
-				  <div class='text-center p-t-12'>
-						<span class='txt1'>
-							Forgot
-						</span>
-						<a class='txt2' href='recovery.php'>
-							Username / Password?
-						</a>
-					</div>
-					
-					<br>
-					<br>
-						<form action='login.php'>
-						<button class='login100-form-btn' href='login.php' >
-							Login Again
-						</button>
-						</form>
-					<br><br><br>
-                  </div>";
-        }
-    } else {
-?>
+
     <form class="login100-form validate-form" method="post" name="login">
 	<span class="login100-form-title">
 						Member Login
@@ -85,8 +42,8 @@
 						</span>
 					</div>
 	   
-      <div class="wrap-input100 validate-input" data-validate = "Password is required">
-						<input class="input100" type="password" name="password" placeholder="Password">
+      <div class="wrap-input100 validate-input" data-validate = "Email is required">
+						<input class="input100" type="text" name="email" placeholder="Email">
 						<span class="focus-input100"></span>
 						<span class="symbol-input100">
 							<i class="fa fa-lock" aria-hidden="true"></i>
@@ -94,23 +51,20 @@
 					</div>
 					
 					<div class="container-login100-form-btn">
-						<button class="login100-form-btn" type="submit" value="Login" name="submit">
+						<button class="login100-form-btn" type="submit" value="recovery" name="submit">
 							Login
 						</button>
 					</div>
 
 					<div class="text-center p-t-12">
-						<a class="txt2" href="registration.php">
-							Create your Account
+						<a class="txt2" href="login.php">
+							Login Here
 							<i class="fa fa-long-arrow-right m-l-5" aria-hidden="true"></i>
 						</a>
 					</div>	
 					<br><br>
   </form>
   
-<?php
-    }
-?>
 </div>
 		</div>
 	</div>
