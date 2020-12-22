@@ -28,7 +28,8 @@
 				<div class="login100-pic js-tilt" data-tilt>
 					<img src="images/img-02.png" alt="IMG">
 				</div>
-				<?php
+
+<?php
 include('db.php');
 if(isset($_POST["email"]) && (!empty($_POST["email"]))){
 $email = $_POST["email"];
@@ -100,11 +101,11 @@ $mail->Subject = $subject;
 $mail->Body = $body;
 $mail->AddAddress($email_to);
 if(!$mail->Send()){
-echo "Mailer Error: " . $mail->ErrorInfo;
+echo "<div class='login100-form'> <h3>Mailer Error:  . $mail->ErrorInfo </h3></div>";
 }else{
 echo "<div class='login100-form'>
 <p>An email has been sent to you with instructions on how to reset your password.</p>
-</div><br /><br /><br />";
+</div>";
  }
    }
 }else{
