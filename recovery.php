@@ -18,7 +18,7 @@
 	<link rel="stylesheet" type="text/css" href="css/main.css">
 <!--===============================================================================================-->
     <meta charset="utf-8"/>
-    <title>Login</title>
+    <title>Recovery Password</title>
     <link rel="stylesheet" href="style.css"/>
 </head>
 <body>
