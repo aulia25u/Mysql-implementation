@@ -19,3 +19,7 @@ Mempelajari dan mengimplementasikan penggunaan basis data Mysql dengan menggunak
 ## Elemen dan Tema :
 1. Login Form v1 by Colorlib 
     https://colorlib.com/wp/template/login-form-v1/
+
+## Gambar :
+1. Nephi Phelia 
+    https://telegramchannels.me/stickers/s-nephiphelia
