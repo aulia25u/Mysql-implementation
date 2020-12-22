@@ -41,12 +41,16 @@ if (!$email) {
    $results = mysqli_query($con,$sel_query);
    $row = mysqli_num_rows($results);
    if ($row==""){
-   $error .= "<p>No user is registered with this email address!</p>";
-   }
+   $error .= "<h3>No user is registered with this email address!</h3><br/>";
+}
   }
    if($error!=""){
-   echo "<div class='error'>".$error."</div>
-   <br /><a href='javascript:history.go(-1)'>Go Back</a>";
+   echo "<div class='login100-form'>".$error."</div>
+   <form action='recovery.php'>
+		 <button class='login100-form-btn' href='recovery.php' >
+			 Recovery Again
+		 </button>
+		 </form>";
    }else{
    $expFormat = mktime(
    date("H"), date("i"), date("s"), date("m") ,date("d")+1, date("Y")
@@ -86,7 +90,7 @@ $mail->IsSMTP();
 $mail->Host = "mail.academia.fun"; // Enter your host here
 $mail->SMTPAuth = true;
 $mail->Username = "noreply@academia.fun"; // Enter your email here
-$mail->Password = "Mbl21sync!!@"; //Enter your password here
+$mail->Password = "Mbl21sync!!"; //Enter your password here
 $mail->Port = 587;
 $mail->IsHTML(true);
 $mail->From = "noreply@academia.fun";
@@ -98,7 +102,7 @@ $mail->AddAddress($email_to);
 if(!$mail->Send()){
 echo "Mailer Error: " . $mail->ErrorInfo;
 }else{
-echo "<div class='error'>
+echo "<div class='login100-form'>
 <p>An email has been sent to you with instructions on how to reset your password.</p>
 </div><br /><br /><br />";
  }
