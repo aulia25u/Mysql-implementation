@@ -49,7 +49,7 @@
         } else {
             echo "<div class='login100-form'>
 			<br>
-                  <h3>Incorrect Username/password.</h3><br/>
+                  <center><h3>Incorrect Username/password.</h3></center><br/>
 				  <br>
 				  <div class='text-center p-t-12'>
 						<span class='txt1'>
