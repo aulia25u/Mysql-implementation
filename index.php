@@ -26,13 +26,18 @@ include("auth_session.php");
 
 </head>
 <body>
-<center>
     <div class="limiter">
 		<div class="container-login100">
-
-        <h1>Hey, <?php echo $_SESSION['username']; ?>!</h1>
-
-    </div>
-</center>
+			<div class="wrap-login200">	
+        		<h1>Hey, <?php echo $_SESSION['username']; ?>!</h1>
+				<br>
+				<form action='logout.php'>
+					<button class='login100-form-btn' href='logout.php' >
+						Logout
+					</button>
+				</form>
+   			 </div>
+		</div>
+	</div>
 </body>
 </html>

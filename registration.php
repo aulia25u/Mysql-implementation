@@ -48,7 +48,7 @@
         $result   = mysqli_query($con, $query);
         if ($result) {
             echo "<div class='login100-form'>
-                  <h3>You are registered successfully.</h3><br/>
+                  <br><center><h3>You are registered successfully.</h3></center><br/><br>
                   <form action='login.php'>
 						<button class='login100-form-btn' href='login.php' >
 							Login
