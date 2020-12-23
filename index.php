@@ -29,14 +29,9 @@ include("auth_session.php");
 <center>
     <div class="limiter">
 		<div class="container-login100">
-	
-        <h1>Hey, <?php echo $_SESSION['username']; ?>!</h1><br>
-        <h3><br>Onichan Daisuki~</h3><br>
-		
-		
-		<br><iframe width="560" height="315" src="https://www.youtube.com/embed/G1IbRujko-A" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-		
-        
+
+        <h1>Hey, <?php echo $_SESSION['username']; ?>!</h1>
+
     </div>
 </center>
 </body>
