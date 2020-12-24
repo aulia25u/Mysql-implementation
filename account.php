@@ -5,9 +5,7 @@ include("auth_session.php");
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="utf-8">
-    <title>Dashboard - Client area</title>
-   <!--===============================================================================================-->	
+<!--===============================================================================================-->	
 	<link rel="icon" type="image/png" href="images/icons/favicon.ico"/>
 <!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css">
@@ -23,44 +21,45 @@ include("auth_session.php");
 	<link rel="stylesheet" type="text/css" href="css/util.css">
 	<link rel="stylesheet" type="text/css" href="css/main.css">
 <!--===============================================================================================-->
-
+    <meta charset="utf-8"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Client area</title>
+    <link rel="stylesheet" href="style.css"/>
 </head>
 <body>
-  <div class="limiter">
+<div class="limiter">
 		<div class="container-login100">
-			<div class="wrap-login200">
+			<div class="wrap-login100">
 				<div class="login100-pic js-tilt" data-tilt>
 					<img src="images/img-01.png" alt="IMG">
 				</div>
-				<div class="login100-form validate-form" >
-				<br>
-					<span class="login100-form-title">
-						<h3>Hey, <?php echo $_SESSION['username']; ?>!</h3>
-					</span>
-					<form action=''>
-					<button class='login100-form-btn' href='' >
-						Change Password
-					</button>
-					</form>
-					<br>
-					<form action='logout.php'>
-					<button class='login100-form-btn' href='logout.php' >
-						Log out
-					</button>
-					</form>
-					<br>
-					<div class="text-center p-t-12">
-						<a class="txt2" href="index.php">
-						<i class="fa fa-long-arrow-left m-l-5" aria-hidden="true"></i>
-							Back To Home
-						</a>
-					</div>	
-					<br><br>
-				</div>
-   			 </div>
+					<div class="login100-form">
+						<span class="login100-form-title">
+							<h3>Hey, <?php echo $_SESSION['username']; ?>!</h3>
+						</span>
+						<div class="container-login100-form-btn">
+							<button class="login100-form-btn" onclick="window.location.href='';">
+								Change Password
+							</button>
+						</div>
+						<div class="container-login100-form-btn">
+							<button class="login100-form-btn" onclick="window.location.href='logout.php';">
+								Logout
+							</button>
+						</div>
+						<br>
+						<div class="text-center p-t-12">
+							<a class="txt2" href="index.php">
+							<i class="fa fa-long-arrow-left m-l-5" aria-hidden="true"></i>
+								Back To Home
+							</a>
+						</div>	
+						<br><br>
+					</div>
+			</div>
 		</div>
-	</div>
-	
+</div>
+
 <!--===============================================================================================-->	
 	<script src="vendor/jquery/jquery-3.2.1.min.js"></script>
 <!--===============================================================================================-->

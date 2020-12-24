@@ -18,7 +18,8 @@
 	<link rel="stylesheet" type="text/css" href="css/main.css">
 <!--===============================================================================================-->
     <meta charset="utf-8"/>
-    <title>Register</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register - Client area</title>
     <link rel="stylesheet" href="style.css"/>
 </head>
 <body>

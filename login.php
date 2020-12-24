@@ -18,7 +18,8 @@
 	<link rel="stylesheet" type="text/css" href="css/main.css">
 <!--===============================================================================================-->
     <meta charset="utf-8"/>
-    <title>Login</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Client area</title>
     <link rel="stylesheet" href="style.css"/>
 </head>
 <body>
@@ -114,7 +115,7 @@
 </div>
 		</div>
 	</div>
-	
+
 <!--===============================================================================================-->	
 	<script src="vendor/jquery/jquery-3.2.1.min.js"></script>
 <!--===============================================================================================-->

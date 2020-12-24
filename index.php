@@ -6,6 +6,7 @@ include("auth_session.php");
 <html>
 <head>
     <meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard - Client area</title>
    <!--===============================================================================================-->	
 	<link rel="icon" type="image/png" href="images/icons/favicon.ico"/>
@@ -28,21 +29,46 @@ include("auth_session.php");
 <body>
     <div class="limiter">
 		<div class="container-login100">
-			<div class="wrap-login200">	
-        		<h1>Welcome, <?php echo $_SESSION['username']; ?>!</h1>
-				<br>
-				<form action='http://35.187.255.23/phpmyadmin'>
-					<button class='login100-form-btn' href='http://35.187.255.23/phpmyadmin'>
+			<div class="wrap-login100">	
+			<div class="login100-pic js-tilt" data-tilt>
+				<img src="images/img-04.png" alt="IMG">
+			</div>
+			<div class="login100-form">
+			<span class="login100-form-title">
+					<h3>Hey, <?php echo $_SESSION['username']; ?>!</h3>
+				</span>
+				<div class="container-login100-form-btn">
+					<button class="login100-form-btn" onclick="window.location.href='http://35.187.255.23/phpmyadmin';">
 						PhpMyAdmin
 					</button>
-				</form>
-				<form action='account.php'>
-					<button class='login100-form-btn' href='account.php' >
-						Account
+				</div>
+				<div class="container-login100-form-btn">
+					<button class="login100-form-btn" onclick="window.location.href='account.php';">
+						Account setting
 					</button>
-				</form>
+				</div>
+				<br>
    			 </div>
+			 </div>
 		</div>
 	</div>
+</div>
+<!--===============================================================================================-->	
+	<script src="vendor/jquery/jquery-3.2.1.min.js"></script>
+<!--===============================================================================================-->
+	<script src="vendor/bootstrap/js/popper.js"></script>
+	<script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+<!--===============================================================================================-->
+	<script src="vendor/select2/select2.min.js"></script>
+<!--===============================================================================================-->
+	<script src="vendor/tilt/tilt.jquery.min.js"></script>
+	<script >
+		$('.js-tilt').tilt({
+			scale: 1.1
+		})
+	</script>
+<!--===============================================================================================-->
+	<script src="js/main.js"></script>
+
 </body>
 </html>

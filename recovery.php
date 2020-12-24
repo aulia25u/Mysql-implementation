@@ -18,6 +18,7 @@
 	<link rel="stylesheet" type="text/css" href="css/main.css">
 <!--===============================================================================================-->
     <meta charset="utf-8"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Recovery Password</title>
     <link rel="stylesheet" href="style.css"/>
 </head>
@@ -68,7 +69,7 @@ VALUES ('".$email."', '".$key."', '".$expDate."');");
 $output='<p>Dear '.$email.',</p>';
 $output.='<p>Please click on the following link to reset your password.</p>';
 $output.='<p>-------------------------------------------------------------</p>';
-$output.='<p><a href="https://tubes.academia.fun/reset-password.php?key='.$key.'&email='.$email.'&action=reset" target="_blank">https://tubes.academia.fun/reset-password.php?key='.$key.'&email='.$email.'&action=reset</a></p>';		
+$output.='<p><a href="http://35.187.255.23/reset-password.php?key='.$key.'&email='.$email.'&action=reset" target="_blank">http://35.187.255.23/reset-password.php?key='.$key.'&email='.$email.'&action=reset</a></p>';		
 $output.='<p>-------------------------------------------------------------</p>';
 $output.='<p>Please be sure to copy the entire link into your browser.
 The link will expire after 1 day for security reason.</p>';
@@ -87,7 +88,7 @@ $mail->IsSMTP();
 $mail->Host = "smtp.gmail.com"; // Enter your host here
 $mail->SMTPAuth = true;
 $mail->Username = "auliarahman235@gmail.com"; // Enter your email here
-$mail->Password = "jfldpyxbnkprxcwx"; //Enter your passwrod here
+$mail->Password = ""; //Enter your passwrod here
 $mail->Port = 587;
 $mail->IsHTML(true);
 $mail->From = "auliarahman235@gmail.com";
