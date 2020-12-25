@@ -92,7 +92,7 @@ $mail->Password = ""; //Enter your passwrod here
 $mail->Port = 587;
 $mail->IsHTML(true);
 $mail->From = "auliarahman235@gmail.com";
-$mail->FromName = "Academia";
+$mail->FromName = "Tubes BasDat";
 $mail->Sender = $fromserver; // indicates ReturnPath header
 $mail->Subject = $subject;
 $mail->Body = $body;

@@ -43,18 +43,23 @@ include("auth_session.php");
 							</button>
 						</div>
 						<div class="container-login100-form-btn">
+							<button class="login100-form-btn" onclick="window.location.href='';">
+								Delete Account
+							</button>
+						</div>
+						<div class="container-login100-form-btn">
 							<button class="login100-form-btn" onclick="window.location.href='logout.php';">
 								Logout
 							</button>
 						</div>
-						<br>
+						
 						<div class="text-center p-t-12">
 							<a class="txt2" href="index.php">
 							<i class="fa fa-long-arrow-left m-l-5" aria-hidden="true"></i>
 								Back To Home
 							</a>
 						</div>	
-						<br><br>
+						<br>
 					</div>
 			</div>
 		</div>
