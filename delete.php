@@ -67,6 +67,7 @@ function delete_account()
 							if (isset($_POST["delete_btn"])) {
 								if (delete_account()) {
 									header("Location: login.php");
+									
 								}
 							}
 							?>
@@ -74,12 +75,12 @@ function delete_account()
 								Yes, I do
 							</button>
 						</div>
-						<div class="container-login100-form-btn">
+					</form>
+					<div class="container-login100-form-btn">
 							<button class="login100-form-btn" onclick="window.location.href='account.php';">
 								Never mind
 							</button>
-						</div>
-					</form>
+					</div>
 					<br><br>
 				</div>
 			</div>
