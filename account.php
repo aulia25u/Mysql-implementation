@@ -35,24 +35,19 @@ include("auth_session.php");
 				</div>
 					<div class="login100-form">
 						<span class="login100-form-title">
-							<h3>Hey, <?php echo $_SESSION['username']; ?>!</h3>
+							<h3>Account Setting</h3>
 						</span>
 						<div class="container-login100-form-btn">
-							<button class="login100-form-btn" onclick="window.location.href='';">
+							<button class="login100-form-btn" onclick="window.location.href='changepass.php';">
 								Change Password
 							</button>
 						</div>
 						<div class="container-login100-form-btn">
-							<button class="login100-form-btn" onclick="window.location.href='';">
+							<button class="login100-form-btn" onclick="window.location.href='delete.php';">
 								Delete Account
 							</button>
 						</div>
-						<div class="container-login100-form-btn">
-							<button class="login100-form-btn" onclick="window.location.href='logout.php';">
-								Logout
-							</button>
-						</div>
-						
+						<br>
 						<div class="text-center p-t-12">
 							<a class="txt2" href="index.php">
 							<i class="fa fa-long-arrow-left m-l-5" aria-hidden="true"></i>
