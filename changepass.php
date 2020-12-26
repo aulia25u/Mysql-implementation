@@ -72,8 +72,14 @@ function change_pass()
 
 					<?php
 					if (isset($_POST['old_pass']) && isset($_POST['new_pass']))
-						if (change_pass()) echo "password successfuly changed";
-						else echo "password failed to be changed";
+						if (change_pass()) echo 
+							"<div class='login100-form'>
+								<center><b><font color='green'>password successfuly changed</font></b></center><br>
+							</div>";
+						else echo 
+							"<div class='login100-form'>
+								<center><b><font color='red'>password failed to be changed</font></b></center><br>
+							</div>";
 					?>
 
 					<div class="wrap-input100 validate-input" data-validate="Old Pssword Is Required">
@@ -92,7 +98,7 @@ function change_pass()
 						</span>
 					</div>
 
-					<div class="container-login100-form-btn">
+					<div class="container-login100-form-btn" >
 						<button class="login100-form-btn">
 							Change
 						</button>

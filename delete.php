@@ -59,19 +59,21 @@ function delete_account()
 				</div>
 				<div class="login100-form">
 					<span class="login100-form-title">
-						<h4>Are you sure to delete "<?php echo $_SESSION['username']; ?>" account ? <br> </h4>
+						<h4>Are you sure to delete "<?php echo "<font color='red'>".$_SESSION['username']."</font>"; ?>" account ? <br> </h4>
 					</span>
 					<form action="" method="post">
 						<div class="container-login100-form-btn">
 							<?php
 							if (isset($_POST["delete_btn"])) {
 								if (delete_account()) {
-									header("Location: login.php");
-									
+									echo 
+								"<div class='login100-form'>
+									<center><b><font color='green'>Your Account Successfuly Delete</font></b></center><br>
+								</div>";
 								}
 							}
 							?>
-							<button class="login100-form-btn" name="delete_btn" value="true">
+							<button class="login200-form-btn" name="delete_btn" value="true">
 								Yes, I do
 							</button>
 						</div>
@@ -80,7 +82,7 @@ function delete_account()
 							<button class="login100-form-btn" onclick="window.location.href='account.php';">
 								Never mind
 							</button>
-					</div>
+						</div>
 					<br><br>
 				</div>
 			</div>

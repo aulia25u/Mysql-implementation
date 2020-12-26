@@ -38,7 +38,7 @@ include("auth_session.php");
 							<h3>Hey, <?php echo $_SESSION['username']; ?>!</h3>
 						</span>
 						<div class="container-login100-form-btn">
-							<button class="login100-form-btn" onclick="window.location.href='http://35.187.255.23/phpmyadmin';">
+							<button class="login100-form-btn" onclick="window.open('http://35.187.255.23/phpmyadmin','_blank') ;">
 								Phpmyadmin
 							</button>
 						</div>
@@ -47,11 +47,13 @@ include("auth_session.php");
 								Account setting
 							</button>
 						</div>
-						<div class="container-login100-form-btn">
-							<button class="login100-form-btn" onclick="window.location.href='logout.php';">
-								Logout
-							</button>
-						</div>
+						<br>
+						<div class="text-center p-t-10">
+							<a class="txt2" href="logout.php">
+								<b>Logout</b>
+							<i class="fa fa-sign-out m-l-5" aria-hidden="true"></i>
+							</a>
+						</div>	
 						<br><br>
 					</div>
 			</div>
