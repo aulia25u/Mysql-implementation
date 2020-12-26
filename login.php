@@ -34,6 +34,11 @@
 				<?php
 				require('db.php');
 				session_start();
+				// Redirect User When Already Login
+					if (isset($_SESSION['username'])) {
+						header("Location: index.php");
+						exit();
+					}
 				// When form submitted, check and create user session.
 				if (isset($_POST['username'])) {
 					$username = stripslashes($_REQUEST['username']);    // removes backslashes
