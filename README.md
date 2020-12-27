@@ -3,11 +3,11 @@
 Learn and implement the use of the MySQL database using a website interface.
 
 ## Website Features:
-1.Register
-2.Login
-3.Change Password
-4.Delete Account
-5.Recovery Account
+1. Register
+2. Login
+3. Change Password
+4. Delete Account
+5. ecovery Account
 
 ## Members of the group :
 1. Aulia Rahman
