@@ -7,7 +7,7 @@ Learn and implement the use of the MySQL database using a website interface.
 2. Login
 3. Change Password
 4. Delete Account
-5. ecovery Account
+5. Recovery Account
 
 ## Members of the group :
 1. Aulia Rahman
