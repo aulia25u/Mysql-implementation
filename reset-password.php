@@ -1,41 +1,43 @@
 <!DOCTYPE html>
 <html>
-<head>
-<!--===============================================================================================-->	
-	<link rel="icon" type="image/png" href="images/icons/favicon.ico"/>
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="vendor/animate/animate.css">
-<!--===============================================================================================-->	
-	<link rel="stylesheet" type="text/css" href="vendor/css-hamburgers/hamburgers.min.css">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="vendor/select2/select2.min.css">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="css/util.css">
-	<link rel="stylesheet" type="text/css" href="css/main.css">
-<!--===============================================================================================-->
-    <meta charset="utf-8"/>
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Recovery Password</title>
-    <link rel="stylesheet" href="style.css"/>
-</head>
-<body>
-<div class="limiter">
-		<div class="container-login100">
-			<div class="wrap-login100">
-				<div class="login100-pic js-tilt" data-tilt>
-					<img src="images/img-02.png" alt="IMG">
-				</div>
 
-    <script>
-      function goBack() {
-      window.history.back();
-      }
-    </script>
-<?php
+<head>
+    <!--===============================================================================================-->
+    <link rel="icon" type="image/png" href="images/icons/favicon.ico" />
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="vendor/animate/animate.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="vendor/css-hamburgers/hamburgers.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="vendor/select2/select2.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="css/util.css">
+    <link rel="stylesheet" type="text/css" href="css/main.css">
+    <!--===============================================================================================-->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recovery Password</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+    <div class="limiter">
+        <div class="container-login100">
+            <div class="wrap-login100">
+                <div class="login100-pic js-tilt" data-tilt>
+                    <img src="images/img-02.png" alt="IMG">
+                </div>
+
+                <script>
+                    function goBack() {
+                        window.history.back();
+                    }
+                </script>
+                <?php
 error_reporting(0);
 include('db.php');
 if (isset($_GET["key"]) && isset($_GET["email"])
@@ -62,31 +64,33 @@ $error .= "
 	$expDate = $row['expDate'];
 	if ($expDate >= $curDate){
 	?>
-    <br />
-	<form class="login100-form validate-form" method="post" action="" name="update">
-  <span class="login100-form-title">
-			Member Recovery
-	</span>
-	<input type="hidden" name="action" value="update" />
-  <div class="wrap-input100 validate-input" data-validate = "Password is required">
-						<input class="input100" type="password" name="pass1" id="pass1" maxlength="15" required placeholder="Password">
-						<span class="focus-input100"></span>
-						<span class="symbol-input100">
-							<i class="fa fa-lock" aria-hidden="true"></i>
-						</span>
-					</div>
-     <div class="wrap-input100 validate-input" data-validate = "Password is required">
-						<input class="input100" type="password" name="pass2" id="pass2" maxlength="15" required placeholder="Re-Enter New Password">
-						<span class="focus-input100"></span>
-						<span class="symbol-input100">
-							<i class="fa fa-lock" aria-hidden="true"></i>
-						</span>
-					</div>
-	<input type="hidden" name="email" value="<?php echo $email;?>"/>
-  <br>
-	<input class="login100-form-btn" type="submit" id="reset" value="Reset Password" /><br>
-	</form>
-<?php
+                <br />
+                <form class="login100-form validate-form" method="post" action="" name="update">
+                    <span class="login100-form-title">
+                        Member Recovery
+                    </span>
+                    <input type="hidden" name="action" value="update" />
+                    <div class="wrap-input100 validate-input" data-validate="Password is required">
+                        <input class="input100" type="password" name="pass1" id="pass1" maxlength="15" required
+                            placeholder="Password">
+                        <span class="focus-input100"></span>
+                        <span class="symbol-input100">
+                            <i class="fa fa-lock" aria-hidden="true"></i>
+                        </span>
+                    </div>
+                    <div class="wrap-input100 validate-input" data-validate="Password is required">
+                        <input class="input100" type="password" name="pass2" id="pass2" maxlength="15" required
+                            placeholder="Re-Enter New Password">
+                        <span class="focus-input100"></span>
+                        <span class="symbol-input100">
+                            <i class="fa fa-lock" aria-hidden="true"></i>
+                        </span>
+                    </div>
+                    <input type="hidden" name="email" value="<?php echo $email;?>" />
+                    <br>
+                    <input class="login100-form-btn" type="submit" id="reset" value="Reset Password" /><br>
+                </form>
+                <?php
 }else{
 $error .= "<h3>Link Expired</h3>
 The link is expired. You are trying to use the expired link which as valid only 24 hours (1 days after request).<br /><br />";
@@ -138,26 +142,27 @@ echo "
 		}		
 }
 ?>
-</div>
-		</div>
-	</div>
-	
-<!--===============================================================================================-->	
-	<script src="vendor/jquery/jquery-3.2.1.min.js"></script>
-<!--===============================================================================================-->
-	<script src="vendor/bootstrap/js/popper.js"></script>
-	<script src="vendor/bootstrap/js/bootstrap.min.js"></script>
-<!--===============================================================================================-->
-	<script src="vendor/select2/select2.min.js"></script>
-<!--===============================================================================================-->
-	<script src="vendor/tilt/tilt.jquery.min.js"></script>
-	<script >
-		$('.js-tilt').tilt({
-			scale: 1.1
-		})
-	</script>
-<!--===============================================================================================-->
-	<script src="js/main.js"></script>
+            </div>
+        </div>
+    </div>
+
+    <!--===============================================================================================-->
+    <script src="vendor/jquery/jquery-3.2.1.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="vendor/bootstrap/js/popper.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="vendor/select2/select2.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="vendor/tilt/tilt.jquery.min.js"></script>
+    <script>
+        $('.js-tilt').tilt({
+            scale: 1.1
+        })
+    </script>
+    <!--===============================================================================================-->
+    <script src="js/main.js"></script>
 
 </body>
+
 </html>
