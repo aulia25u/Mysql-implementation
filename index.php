@@ -25,8 +25,10 @@ include("auth_session.php");
     <link rel="stylesheet" type="text/css" href="css/util.css">
     <link rel="stylesheet" type="text/css" href="css/main.css">
     <!--===============================================================================================-->
+
 </head>
 
+<body>
 <div class="limiter">
     <div class="container-login100">
         <div class="wrap-login100">
@@ -39,8 +41,8 @@ include("auth_session.php");
                 </span>
                 <div class="container-login100-form-btn">
                     <button class="login100-form-btn"
-                        onclick="window.open('https://sg05.rapidwhm.com:2083/cpsess2669348027/3rdparty/phpMyAdmin/','_blank');">
-                        PHYMYADMIN
+                        onclick="window.open('admin.php');">
+                        Admin Panel
                     </button>
                 </div>
                 <div class="container-login100-form-btn">
