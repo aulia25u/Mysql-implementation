@@ -30,6 +30,14 @@ Learn and implement the use of the MySQL database using a website interface.
     https://www.sitepoint.com/sending-emails-php-phpmailer/
 7. Forgot Password Recovery (Reset) using PHP and MySQL
     https://www.allphptricks.com/forgot-password-recovery-reset-using-php-and-mysql/
+8. Form Bootsrapt documentation
+    https://getbootstrap.com/docs/4.0/components/forms/
+9. Mysql Fecth Row
+    https://www.php.net/manual/en/function.mysql-num-rows.php
+10. Call 2 table mysql with inner join
+    https://www.mysqltutorial.org/mysql-inner-join.aspx
+11. Accounting format php
+    https://www.w3schools.com/php/phptryit.asp?filename=tryphp_func_string_number_format
     
 ## Elements and Themes :
 1. Login Form v1 by Colorlib 
