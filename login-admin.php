@@ -48,14 +48,14 @@
                     $password = stripslashes($_REQUEST['password']);
                     $password = mysqli_real_escape_string($con, $password);
                     // Check user is exist in the database
-                    $query    = "SELECT * FROM `users` WHERE username='$username'
+                    $query    = "SELECT * FROM `admins` WHERE username='$username'
                      AND password='" . md5($password) . "'";
                     $result = mysqli_query($con, $query) or die($mysqli->error);
                     $rows = mysqli_num_rows($result);
                     if ($rows == 1) {
                         if ($_SESSION['username'] = $username) {
                             // Redirect to user dashboard page
-                            header("Location: index.php");
+                            header("Location: admin.php");
                         }
                     } else {
                         echo "<div class='login100-form'>
@@ -73,8 +73,8 @@
 					
 					<br>
 					<br>
-						<form action='login.php'>
-						<button class='login100-form-btn' href='login.php' >
+						<form action='login-admin.php'>
+						<button class='login100-form-btn' href='login-admin.php' >
 							Login Again
 						</button>
 						</form>
@@ -85,7 +85,7 @@
                 ?>
                     <form class="login100-form validate-form" method="post" name="login">
                         <span class="login100-form-title">
-                            Member Login
+                            Admin Login
                         </span>
 
                         <div class="wrap-input100 validate-input" data-validate="Username Is Required">
@@ -109,19 +109,15 @@
                                 Login
                             </button>
                         </div>
-
                         <div class="text-center p-t-15">
-                            <a class="txt3" href="login-admin.php">
-                                Login as Admin
+                            <a class="txt3" href="login.php">
+                                Login as User
                             </a>
                         </div>
-                        <div class="text-center p-t-8">
-                            <a class="txt2" href="registration.php">
-                                Create your Account
-                            </a>
-                        </div>
+
                         <br>
                     </form>
+
                 <?php
                 }
                 ?>

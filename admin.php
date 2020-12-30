@@ -1,6 +1,38 @@
 <?php
 //include auth_session.php file on all user panel pages
 include("auth_session.php");
+include("admin_auth.php");
+include('db.php');
+
+// Get All Row Users
+$users    = "SELECT * FROM users";
+$result = mysqli_query($con, $users);
+$num_user = mysqli_num_rows($result);
+
+// Get All Row Car Brands
+$brands    = "SELECT * FROM car_description";
+$result1 = mysqli_query($con, $brands);
+$num_brand = mysqli_num_rows($result1);
+
+// Get All Unit of Cars 
+$units = "SELECT * FROM car_stock";
+$result2 = mysqli_query($con, $units);
+
+$unit = 0;
+while ($num = mysqli_fetch_assoc($result2)) {
+    $unit += $num['car_stock'];
+}
+
+// Get All Row Transaction
+$totaltrans   = "SELECT * FROM transaction";
+$result3 = mysqli_query($con, $totaltrans);
+$num_transaction = mysqli_num_rows($result3);
+
+// Get All Row Admins
+$admins    = "SELECT * FROM admins";
+$result4 = mysqli_query($con, $admins);
+$num_admins = mysqli_num_rows($result4);
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -15,9 +47,7 @@ include("auth_session.php");
 
     <!-- Custom fonts for this template-->
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
-    <link
-        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
 
     <!-- Custom styles for this template-->
     <link href="css/sb-admin-2.min.css" rel="stylesheet">
@@ -29,8 +59,8 @@ include("auth_session.php");
 
         <!-- Call Sidebar & Topbar -->
         <?php
-            //include auth_session.php file on all user panel pages
-            include("header.php");
+        //include auth_session.php file on all user panel pages
+        include("header.php");
         ?>
         <!-- End Call Sidebar & Topbar -->
 
@@ -53,7 +83,7 @@ include("auth_session.php");
                                 <div class="col mr-2">
                                     <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
                                         Car Brands</div>
-                                    <div class="h5 mb-0 font-weight-bold text-gray-800">$carbrand</div>
+                                    <div class="h5 mb-0 font-weight-bold text-gray-800"><?= $num_brand ?> Brand</div>
                                 </div>
                                 <div class="col-auto">
                                     <i class="fas fas fa-car fa-2x text-dark-300"></i>
@@ -71,7 +101,7 @@ include("auth_session.php");
                                 <div class="col mr-2">
                                     <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
                                         Total Cars</div>
-                                    <div class="h5 mb-0 font-weight-bold text-gray-800">$totalcars</div>
+                                    <div class="h5 mb-0 font-weight-bold text-gray-800"><?= $unit ?> Unit</div>
                                 </div>
                                 <div class="col-auto">
                                     <i class="fas fa-car-side fa-2x text-dark-300"></i>
@@ -89,7 +119,7 @@ include("auth_session.php");
                                 <div class="col mr-2">
                                     <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
                                         transaction</div>
-                                    <div class="h5 mb-0 font-weight-bold text-gray-800">$transaction</div>
+                                    <div class="h5 mb-0 font-weight-bold text-gray-800"><?= $num_transaction ?> Transaction</div>
                                 </div>
                                 <div class="col-auto">
                                     <i class="fas fa-dollar-sign fa-2x text-dark-300"></i>
@@ -106,8 +136,8 @@ include("auth_session.php");
                             <div class="row no-gutters align-items-center">
                                 <div class="col mr-2">
                                     <div class="text-xs font-weight-bold text-info text-uppercase mb-1">
-                                        Total User</div>
-                                    <div class="h5 mb-0 font-weight-bold text-gray-800">$users</div>
+                                        Total User & Admin</div>
+                                    <div class="h5 mb-0 font-weight-bold text-gray-800"><?= $num_user ?> User + <?= $num_admins ?> Admin</div>
                                 </div>
                                 <div class="col-auto">
                                     <i class="fas fa-user fa-2x text-dark-300"></i>
@@ -128,9 +158,10 @@ include("auth_session.php");
     <!-- End of Content Wrapper -->
 
     <?php
-            //include auth_session.php file on all user panel pages
-            include("footer.php");
-        ?>
+    //include auth_session.php file on all user panel pages
+    include("footer.php");
+    ?>
 
 </body>
+
 </html>

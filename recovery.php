@@ -141,6 +141,7 @@ echo "<div class='login100-form'>
                     </div>
                     <br>
                 </form>
+
                 <?php } ?>
             </div>
         </div>

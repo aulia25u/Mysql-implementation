@@ -2,6 +2,7 @@
 //include auth_session.php file on all user panel pages
 include("auth_session.php");
 include("admin_auth.php");
+include("db.php");
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -14,7 +15,7 @@ include("admin_auth.php");
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Transaction</title>
+    <title>Cars View</title>
 
     <!-- Custom fonts for this template -->
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -45,46 +46,36 @@ include("admin_auth.php");
             <!-- DataTales Example -->
             <div class="card shadow mb-4">
                 <div class="card-header py-3">
-                    <h6 class="m-0 font-weight-bold text-primary">Transaction Table</h6>
+                    <h6 class="m-0 font-weight-bold text-primary">Cars Table</h6>
                 </div>
                 <div class="card-body">
                     <div class="table-responsive">
                         <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                             <thead>
                                 <tr>
-                                    <th>Buyer</th>
-                                    <th>Brand</th>
-                                    <th>Type</th>
-                                    <th>Year</th>
-                                    <th>Sale Date</th>
+                                    <th>Name</th>
+                                    <th>Manifacture</th>
+                                    <th>Production</th>
                                     <th>Price</th>
+                                    <th>Stock</th>
+                                    <th>Last Sale</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td>Aulia Rahman</td>
-                                    <td>Lamborghini</td>
-                                    <td>Aventador</td>
-                                    <td>2019</td>
-                                    <td>2020/0412/31</td>
-                                    <td>$9,320,800</td>
-                                </tr>
-                                <tr>
-                                    <td>Hanif Kukuh R</td>
-                                    <td>Ford</td>
-                                    <td>Mustang</td>
-                                    <td>2019</td>
-                                    <td>2020/0412/31</td>
-                                    <td>$9,320,800</td>
-                                </tr>
-                                <tr>
-                                    <td>Izzu Zantya F</td>
-                                    <td>Space X</td>
-                                    <td>Falcon 9 heavy</td>
-                                    <td>2019</td>
-                                    <td>2020/0412/31</td>
-                                    <td>$20,320,800</td>
-                                </tr>
+                                <?php
+                                $query    = "SELECT * FROM car_description INNER JOIN car_stock ON car_description.car_name=car_stock.car_name";
+                                $result = mysqli_query($con, $query);
+                                while ($row = mysqli_fetch_assoc($result)) {
+                                    echo '<tr>
+                                    <td>' . $row['car_name'] . '</td>
+                                    <td>' . $row['car_manifacture'] . '</td>
+                                    <td>' . $row['car_production_date'] . '</td>
+                                    <td>Rp. ' . number_format($row['car_price']) . '</td>
+                                    <td>' . $row['car_stock'] . '</td>
+                                    <td>' . $row['out_date'] . '</td>
+                                </tr>';
+                                }
+                                ?>
                             </tbody>
                         </table>
                     </div>
