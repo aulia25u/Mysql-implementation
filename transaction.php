@@ -2,6 +2,7 @@
 //include auth_session.php file on all user panel pages
 include("auth_session.php");
 include("admin_auth.php");
+include("db.php");
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -52,39 +53,37 @@ include("admin_auth.php");
                         <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                             <thead>
                                 <tr>
+                                    <th>No</th>
                                     <th>Buyer</th>
-                                    <th>Brand</th>
                                     <th>Type</th>
+                                    <th>Brand</th>
                                     <th>Year</th>
-                                    <th>Sale Date</th>
+                                    <th>Unit</th>
                                     <th>Price</th>
+                                    <th>Sale Date</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td>Aulia Rahman</td>
-                                    <td>Lamborghini</td>
-                                    <td>Aventador</td>
-                                    <td>2019</td>
-                                    <td>2020/0412/31</td>
-                                    <td>$9,320,800</td>
-                                </tr>
-                                <tr>
-                                    <td>Hanif Kukuh R</td>
-                                    <td>Ford</td>
-                                    <td>Mustang</td>
-                                    <td>2019</td>
-                                    <td>2020/0412/31</td>
-                                    <td>$9,320,800</td>
-                                </tr>
-                                <tr>
-                                    <td>Izzu Zantya F</td>
-                                    <td>Space X</td>
-                                    <td>Falcon 9 heavy</td>
-                                    <td>2019</td>
-                                    <td>2020/0412/31</td>
-                                    <td>$20,320,800</td>
-                                </tr>
+                                <?php
+                                $query    = "SELECT * FROM transaction INNER JOIN transaction_history ON transaction.transaction_id=transaction_history.transaction_id";
+                                $result = mysqli_query($con, $query);
+                                while ($row = mysqli_fetch_assoc($result)) {
+                                    $query1    = "SELECT * FROM car_description INNER JOIN car_stock ON car_description.car_name=car_stock.car_name where car_name='$$row[car_name]'";
+                                    $result1 = mysqli_query($con, $query1);
+
+
+                                    echo '<tr>
+                                    <td>' . $row['transaction_id'] . '</td>
+                                    <td>' . $row['user_name'] . '</td>
+                                    <td>' . $row['car_name'] . '</td>
+                                    <td> $car_Manufacture</td>              //Dari Tabel Car_description
+                                    <td> $car_production_date</td>          //Dari Tabel Car_description
+                                    <td>' . $row['car_unit'] . '</td>                     
+                                    <td> $car_price</td>                    //Dari Tabel car_description ( jumlah unit x price ) 
+                                    <td>' . $row['transaction_date'] . '</td>
+                                     </tr>';
+                                }
+                                ?>
                             </tbody>
                         </table>
                     </div>
