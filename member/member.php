@@ -2,6 +2,7 @@
 //include auth_session.php file on all user panel pages
 include("../auth_session.php");
 include("../db.php");
+include("member_auth.php");
 
 // Get All Unit member have
 $current_active_user = $_SESSION["username"];

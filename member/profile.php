@@ -2,6 +2,7 @@
 //include auth_session.php file on all user panel pages
 include("../auth_session.php");
 include('../db.php');
+include("member_auth.php");
 
 $current_active_user = $_SESSION["username"];
 $query    = "SELECT * FROM users INNER JOIN user_description ON users.id=user_description.id WHERE username='$current_active_user'";

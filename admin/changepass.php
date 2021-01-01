@@ -1,6 +1,7 @@
 <?php
 //include auth_session.php file on all user panel pages
 include("../auth_session.php");
+include("admin_auth.php");
 
 function change_pass()
 {
