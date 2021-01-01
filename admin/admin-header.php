@@ -23,6 +23,7 @@
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Dashboard</span></a>
             </li>
+
             <!-- Nav Item - Charts -->
             <li class="nav-item">
                 <a class="nav-link" href="https://sg05.rapidwhm.com:2083/cpsess2669348027/3rdparty/phpMyAdmin/" target="_blank">
@@ -32,6 +33,27 @@
 
             <!-- Divider -->
             <hr class="sidebar-divider">
+
+            <!-- Heading -->
+            <div class="sidebar-heading">
+                Management
+            </div>
+
+            <!-- Nav Item - Pages Collapse Menu -->
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseTwo">
+                    <i class="fas fa-fw fa-users"></i>
+                    <span>Member List</span>
+                </a>
+                <div id="collapseOne" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <h6 class="collapse-header">Member Components:</h6>
+                        <a class="collapse-item" href="member-all.php">Member All</a>
+                        <a class="collapse-item" href="member.php">Member Profile</a>
+                    </div>
+                </div>
+            </li>
+
             <!-- Nav Item - Pages Collapse Menu -->
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
@@ -110,16 +132,20 @@
 
                                 <!-- Get Name Admin From admin_description  -->
                                 <?php
-                                include('db.php');
+                                include('../db.php');
                                 $current_active_user = $_SESSION["username"];
                                 $qname    = "SELECT * FROM admins INNER JOIN admin_description ON admins.id=admin_description.id WHERE username='$current_active_user'";
                                 $rname = mysqli_query($con, $qname);
                                 while ($rowname = mysqli_fetch_assoc($rname)) {
                                     echo '<span class="mr-2 d-none d-lg-inline text-gray-600 big">' . $rowname['admin_name'] . '</span>';
                                 }
+                                $rows = mysqli_num_rows($rname);
+                                if ($rows == 0) {
+                                    echo '<span class="mr-2 d-none d-lg-inline text-gray-600 big">' . $_SESSION["username"] . '</span>';
+                                }
                                 ?>
 
-                                <img class="img-profile rounded-circle" src="images/img-01.png">
+                                <img class="img-profile rounded-circle" src="../images/img-01.png">
                             </a>
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">

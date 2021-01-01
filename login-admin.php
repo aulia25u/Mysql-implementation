@@ -20,7 +20,7 @@
     <!--===============================================================================================-->
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login - Client area</title>
+    <title>Login - Admin area</title>
 </head>
 
 <body>
@@ -37,7 +37,7 @@
                 // Redirect User When Already Login
 
                 if (isset($_SESSION['username'])) {
-                    header("Location: index.php");
+                    header("Location: admin");
                     exit();
                 }
 
@@ -55,37 +55,26 @@
                     if ($rows == 1) {
                         if ($_SESSION['username'] = $username) {
                             // Redirect to user dashboard page
-                            header("Location: admin.php");
+                            header("Location: admin");
                         }
                     } else {
                         echo "<div class='login100-form'>
-			<br>
-                  <center><h3>Incorrect Username/password.</h3></center><br/>
-				  <br>
-				  <div class='text-center p-t-12'>
-						<span class='txt1'>
-							Forgot
-						</span>
-						<a class='txt2' href='recovery.php'>
-							Username / Password?
-						</a>
-					</div>
-					
-					<br>
-					<br>
-						<form action='login-admin.php'>
-						<button class='login100-form-btn' href='login-admin.php' >
-							Login Again
-						</button>
-						</form>
-					<br><br><br>
-                  </div>";
+			                    <br>
+                                <center><h3>Incorrect Username/password.</h3></center><br/>
+                                <br>
+                                <form action='login-admin.php'>
+                                <button class='login100-form-btn' href='login-admin.php' >
+                                    Login Again
+                                </button>
+                                </form>
+                                <br><br><br>
+                            </div>";
                     }
                 } else {
                 ?>
                     <form class="login100-form validate-form" method="post" name="login">
                         <span class="login100-form-title">
-                            Admin Login
+                            <font color="green">Admin</font> Login
                         </span>
 
                         <div class="wrap-input100 validate-input" data-validate="Username Is Required">
@@ -110,7 +99,7 @@
                             </button>
                         </div>
                         <div class="text-center p-t-15">
-                            <a class="txt3" href="login.php">
+                            <a class="txt3" href="index.php">
                                 Login as User
                             </a>
                         </div>
