@@ -14,6 +14,7 @@ $result = mysqli_query($con, $query);
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="icon" type="image/png" href="../images/icons/favicon.ico" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>My Profile</title>
 

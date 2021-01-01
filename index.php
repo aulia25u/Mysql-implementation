@@ -37,8 +37,17 @@
                 // Redirect User When Already Login
 
                 if (isset($_SESSION['username'])) {
-                    header("Location: member");
-                    exit();
+                    $current_active_user = $_SESSION["username"];
+                    $query    = "SELECT * FROM users  WHERE username='$current_active_user'";
+                    $result = mysqli_query($con, $query);
+                    $rows = mysqli_num_rows($result);
+                    if ($rows == 1) {
+                        header("Location: member");
+                        exit();
+                    } else {
+                        header("Location: admin");
+                        exit();
+                    }
                 }
 
                 // When form submitted, check and create user session.
