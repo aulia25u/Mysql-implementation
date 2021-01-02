@@ -17,7 +17,7 @@ function delete_account()
     //     return true;
     // }
     $current_active_user = $_SESSION["username"];
-    $qname    = "SELECT * FROM users INNER JOIN user_description ON user.id=user_description.id WHERE username='$current_active_user'";
+    $qname    = "SELECT * FROM users INNER JOIN user_description ON users.id=user_description.id WHERE username='$current_active_user'";
     $rname = mysqli_query($con, $qname);
     $rows = mysqli_num_rows($rname);
 
