@@ -8,13 +8,38 @@ function delete_account()
     // require db file
     require('../db.php');
     // catch current active user
-    $current_active_user = $_SESSION["username"];
+    // $current_active_user = $_SESSION["username"];
     // if user has been deleted succesfully
-    if (mysqli_query($con, "DELETE FROM users WHERE username='$current_active_user'")) {
-        // delete current active user
-        unset($_SESSION['username']);
+    // if (mysqli_query($con, "SELECT FROM admins INNER JOIN admin_description ON admin_description.id=admins.id WHERE username='$current_active_user'")) {
+    //     // delete current active user
+    //     unset($_SESSION['username']);
 
-        return true;
+    //     return true;
+    // }
+    $current_active_user = $_SESSION["username"];
+    $qname    = "SELECT * FROM users INNER JOIN user_description ON user.id=user_description.id WHERE username='$current_active_user'";
+    $rname = mysqli_query($con, $qname);
+    $rows = mysqli_num_rows($rname);
+
+    // Chek if user already fill in profile or not......
+    // If not......
+    if ($rows == 0) {
+        if (mysqli_query($con, "DELETE FROM users WHERE username='$current_active_user'")) {
+            // delete current active user
+            unset($_SESSION['username']);
+            return true;
+        }
+    }
+    // if yes.......
+    else {
+        while ($rowname = mysqli_fetch_assoc($rname)) {
+            $id = $rowname["id"];
+            if (mysqli_query($con, "DELETE FROM user_description WHERE id='$id'") && mysqli_query($con, "DELETE FROM users WHERE id='$id'")) {
+                // delete current active user
+                unset($_SESSION['username']);
+                return true;
+            }
+        }
     }
 }
 ?>
@@ -45,10 +70,8 @@ function delete_account()
                             <?php
                             if (isset($_POST["delete_btn"])) {
                                 if (delete_account()) {
-                                    echo
-                                        "<div class='login100-form'>
-									<center><b><font color='green'>Your Account Successfuly Delete</font></b></center><br>
-								</div>";
+
+                                    header("Location: success-delete.php");
                                 }
                             }
                             ?>
