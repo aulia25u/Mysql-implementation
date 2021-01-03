@@ -4,7 +4,7 @@
     <title>Delete Account Success</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="refresh" content="3; url='http://127.0.0.1/tugas/index.php'" />
+    <meta http-equiv="refresh" content="3; url='https://tubes.academia.fun/index.php'" />
     <!--===============================================================================================-->
     <link rel="icon" type="image/png" href="../images/icons/favicon.ico" />
     <!--===============================================================================================-->
