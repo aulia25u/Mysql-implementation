@@ -24,7 +24,7 @@ while ($num = mysqli_fetch_assoc($result2)) {
 }
 
 // Get All Row Transaction
-$totaltrans   = "SELECT * FROM transaction";
+$totaltrans   = "SELECT * FROM transaction_history";
 $result3 = mysqli_query($con, $totaltrans);
 $num_transaction = mysqli_num_rows($result3);
 

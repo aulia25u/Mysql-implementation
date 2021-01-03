@@ -6,19 +6,20 @@ include("member_auth.php");
 
 // Get All Unit member have
 $current_active_user = $_SESSION["username"];
-$users    = "SELECT * FROM transaction INNER JOIN transaction_history ON transaction.transaction_id=transaction_history.transaction_id WHERE username='$current_active_user' ";
+$users    = "SELECT * FROM transaction_history WHERE username='$current_active_user' ";
 $result1 = mysqli_query($con, $users);
 
 $unit = 0;
 while ($num = mysqli_fetch_assoc($result1)) {
-    $unit += $num['car_unit'];
+    $unit += $num['total_carbuy'];
 }
 
 // Get All Unit member have
 $current_active_user = $_SESSION["username"];
-$users    = "SELECT * FROM transaction INNER JOIN transaction_history ON transaction.transaction_id=transaction_history.transaction_id WHERE username='$current_active_user' ";
+$users    = "SELECT * FROM transaction_history WHERE username='$current_active_user' ";
 $result2 = mysqli_query($con, $users);
 $num_trans = mysqli_num_rows($result2);
+
 ?>
 <!DOCTYPE html>
 
@@ -100,7 +101,13 @@ $num_trans = mysqli_num_rows($result2);
                                 <div class="col mr-2">
                                     <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
                                         My transaction</div>
-                                    <div class="h5 mb-0 font-weight-bold text-gray-800"><?= $num_trans ?> Transaction</div>
+                                    <div class="h5 mb-0 font-weight-bold text-gray-800"><?php
+                                                                                        if ($num_trans == 0) {
+                                                                                            echo "0 Transaction";
+                                                                                        } else {
+                                                                                            echo "$num_trans Transaction";
+                                                                                        }
+                                                                                        ?> </div>
                                 </div>
                                 <div class="col-auto">
                                     <i class="fas fa-dollar-sign fa-2x text-dark-300"></i>
@@ -151,14 +158,14 @@ $num_trans = mysqli_num_rows($result2);
                             <tbody>
                                 <?php
                                 $current_active_user = $_SESSION["username"];
-                                $query    = "SELECT * FROM transaction INNER JOIN transaction_history ON transaction.transaction_id=transaction_history.transaction_id WHERE username='$current_active_user' ";
+                                $query    = "SELECT * FROM transaction_history WHERE username='$current_active_user' ";
 
                                 $result = mysqli_query($con, $query);
                                 while ($row = mysqli_fetch_assoc($result)) {
                                     echo '<tr>
                                     <td>' . $row['car_name'] . '</td>
                                     <td>$Car Manifacture</td>
-                                    <td>' . $row['car_unit'] . '</td>
+                                    <td>' . $row['total_carbuy'] . '</td>
                                     <td>$Total Price</td>
                                     <td>' . $row['transaction_date'] . '</td>
                                     

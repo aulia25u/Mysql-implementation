@@ -60,14 +60,14 @@ include("member_auth.php");
                             <tbody>
                                 <?php
                                 $current_active_user = $_SESSION["username"];
-                                $query    = "SELECT * FROM transaction INNER JOIN transaction_history ON transaction.transaction_id=transaction_history.transaction_id WHERE username='$current_active_user' ";
+                                $query    = "SELECT * FROM transaction_history WHERE username='$current_active_user' ";
 
                                 $result = mysqli_query($con, $query);
                                 while ($row = mysqli_fetch_assoc($result)) {
                                     echo '<tr>
                                     <td>' . $row['car_name'] . '</td>
                                     <td>$Car Manifacture</td>
-                                    <td>' . $row['car_unit'] . '</td>
+                                    <td>' . $row['total_carbuy'] . '</td>
                                     <td>$Total Price</td>
                                     <td>' . $row['transaction_date'] . '</td>
                                     

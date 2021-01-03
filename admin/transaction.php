@@ -62,7 +62,7 @@ include("../db.php");
                             </thead>
                             <tbody>
                                 <?php
-                                $query    = "SELECT * FROM transaction INNER JOIN transaction_history ON transaction.transaction_id=transaction_history.transaction_id";
+                                $query    = "SELECT * FROM transaction_history";
                                 $result = mysqli_query($con, $query);
                                 while ($row = mysqli_fetch_assoc($result)) {
                                     $query1    = "SELECT * FROM car_description INNER JOIN car_stock ON car_description.car_name=car_stock.car_name where car_name='$$row[car_name]'";
@@ -70,13 +70,13 @@ include("../db.php");
 
 
                                     echo '<tr>
-                                    <td>' . $row['transaction_id'] . '</td>
+                                    <td>' . $row['history_id'] . '</td>
                                     <td>' . $row['user_name'] . '</td>
                                     <td>' . $row['car_name'] . '</td>
-                                    <td> $car_Manufacture</td>              //Dari Tabel Car_description
-                                    <td> $car_production_date</td>          //Dari Tabel Car_description
-                                    <td>' . $row['car_unit'] . '</td>                     
-                                    <td> $car_price</td>                    //Dari Tabel car_description ( jumlah unit x price ) 
+                                    <td> $car_Manufacture</td>              
+                                    <td> $car_production_date</td>         
+                                    <td>' . $row['total_carbuy'] . '</td>                     
+                                    <td> $car_price</td>                    
                                     <td>' . $row['transaction_date'] . '</td>
                                      </tr>';
                                 }
