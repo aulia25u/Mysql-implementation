@@ -15,7 +15,6 @@ $result = mysqli_query($con, $query);
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="icon" type="image/png" href="../images/icons/favicon.ico" />
     <title>My Profile</title>
 
     <!-- Custom fonts for this template-->
@@ -58,13 +57,14 @@ $result = mysqli_query($con, $query);
                                 <?php
                                 while ($row = mysqli_fetch_assoc($result)) {
                                     echo '
-                                    <h5 class="card-title">' . $row['user_name'] . '</h5>
-                                    <hr class="sidebar-divider"
-                                    <p class="card-text"> Email        : ' . $row['email'] . '</p>
-                                    <p class="card-text"> Gender       : ' . $row['user_gender'] . '</p>
-                                    <p class="card-text"> Age          : ' . $row['user_age'] . ' year</p>
-                                    <p class="card-text"> Address      : ' . $row['user_addres'] . '</p>
-                                    <p class="card-text"> Member since : ' . $row['create_datetime'] . '</p>
+                                    <h5 class="card-title"><b>' . $row['user_name'] . '</b></h5>
+                                    <hr class="sidebar-divider">
+                                    <p class="card-text"><pre> Email        : ' . $row['email'] . '</pre></p>
+                                    <p class="card-text"><pre> Gender       : ' . $row['user_gender'] . '</pre></p>
+                                    <p class="card-text"><pre> Age          : ' . $row['user_age'] . ' year</pre></p>
+                                    <p class="card-text"><pre> Address      : ' . $row['user_addres'] . '</pre></p>
+                                    </pre>
+                                    <p class="card-text"><pre> Member since : ' . $row['create_datetime'] . '</pre></p>
                                 ';
                                 }
                                 $rows = mysqli_num_rows($result);

@@ -9,7 +9,6 @@ include("admin_auth.php");
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="icon" type="image/png" href="../images/icons/favicon.ico" />
     <title>Edit Profile</title>
 
     <!-- Custom fonts for this template-->
@@ -41,54 +40,40 @@ include("admin_auth.php");
 
             <!-- Content Row -->
             <div class="row ml-1">
-                <form>
+                <form method="post" action="post-profile.php" enctype="multipart/form-data">
                     <div class="form-row ">
-                        <div class="form-group col-md-6">
-                            <label for="inputEmail4">First Name</label>
-                            <input type="text" class="form-control" id="inputEmail4">
+                        <div class="form-group col-md-12">
+                            <label for="inputName">Full Name</label>
+                            <input type="text" class="form-control" id="inputName" name="fname" required>
                         </div>
+
                         <div class="form-group col-md-6">
-                            <label for="inputPassword4">Last Name</label>
-                            <input type="text" class="form-control" id="inputPassword4">
-                        </div>
-                    </div>
-                    <div class="form-row ">
-                        <div class="form-group col-md-6">
-                            <label for="inputEmail4">Gender</label>
-                            <select id="inputState" class="form-control">
+                            <label for="inputGender">Gender</label>
+                            <select class="form-control" id="inputGender" name="gender" required>
                                 <option selected>Choose...</option>
                                 <option>Man</option>
                                 <option>Woman</option>
+
                             </select>
                         </div>
+
                         <div class="form-group col-md-6">
-                            <label for="inputPassword4">Age</label>
-                            <input type="text" class="form-control" id="inputPassword4">
+                            <label for="inputAge">Age</label>
+                            <input type="number" class="form-control" id="inputAge" name="age" required>
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="inputAddress">Address</label>
-                        <input type="text" class="form-control" id="inputAddress">
+                        <input type="text" class="form-control" id="inputAddress" name="address" required>
                     </div>
                     <div class="form-row">
-                        <div class="form-group col-md-6">
-                            <label for="inputCity">City</label>
-                            <input type="text" class="form-control" id="inputCity">
-                        </div>
-                        <div class="form-group col-md-4">
-                            <label for="inputState">State</label>
-                            <input type="text" class="form-control" id="input state">
-                        </div>
-                        <div class="form-group col-md-2">
-                            <label for="inputZip">Zip</label>
-                            <input type="text" class="form-control" id="inputZip">
-                        </div>
                         <div class="form-group ml-2">
                             <label for="inputState">Profile Picture</label>
-                            <input type="file" class="form-control-file" id="exampleFormControlFile1">
+                            <input type="file" class="form-control-file" id="photo" name="image" onchange="PreviewImage();">
                         </div>
                     </div>
-                    <button type="submit" class="btn btn-primary mt-3">Submit</button>
+                    <button type="submit" name="submit" class="btn btn-primary mt-3">Submit</button>
+
                 </form>
             </div>
         </div>
