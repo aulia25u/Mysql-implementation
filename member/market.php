@@ -2,7 +2,15 @@
 //include auth_session.php file on all user panel pages
 include("../auth_session.php");
 include("member_auth.php");
-include("../db.php");
+
+function buy_car($sold_car_name)
+{
+    include("../db.php");
+    $sold_car_name = $_POST['sold_car_name'];
+    $current_car_stock = (int) mysqli_fetch_assoc(mysqli_query($con, "SELECT car_stock FROM car_stock WHERE car_name='$sold_car_name'"))[0];
+    $current_car_stock--;
+    mysqli_query($con, "UPDATE car_stock SET car_stock='$current_car_stock' WHERE car_name='$sold_car_name'");
+}
 ?>
 <!DOCTYPE html>
 
@@ -40,6 +48,8 @@ include("../db.php");
         <!-- Begin Page Content -->
         <div class="container-fluid">
 
+
+
             <div class="card shadow mb-4">
 
                 <div class="card-header py-3">
@@ -63,18 +73,29 @@ include("../db.php");
                                 <?php
                                 $query    = "SELECT * FROM car_description INNER JOIN car_stock ON car_description.car_name=car_stock.car_name";
                                 $result = mysqli_query($con, $query);
-                                while ($row = mysqli_fetch_assoc($result)) {
-                                    echo '<tr>
-                                    <td>' . $row['car_name'] . '</td>
-                                    <td>' . $row['car_manifacture'] . '</td>
-                                    <td>' . $row['car_production_date'] . '</td>
-                                    <td>Rp. ' . number_format($row['car_price']) . '</td>
-                                    <td>' . $row['car_stock'] . '</td>
-                                    <td>' . $row['out_date'] . '</td>
-                                    <td><center><button>Buy</button></center></td>
-                                </tr>';
-                                }
-                                ?>
+                                while ($row = mysqli_fetch_assoc($result)) { ?>
+                                    <form action="" method="post">
+                                        <input type="hidden" name="sold_car_name" value="<?= $row['car_name'] ?>">
+                                        <tr>
+                                            <td><?= $row['car_name'] ?></td>
+                                            <td><?= $row['car_manifacture'] ?></td>
+                                            <td><?= $row['car_production_date'] ?></td>
+                                            <td>Rp. <?= number_format($row['car_price']) ?></td>
+                                            <td><?= $row['car_stock'] ?></td>
+                                            <td><?= $row['out_date'] ?></td>
+                                            <td>
+                                                <center>
+                                                    <button type="submit" value="true" name="btn_buy_car">Buy</button>
+                                                </center>
+                                            </td>
+                                            <?php
+                                            if (isset($_POST['btn_buy_car'])) {
+                                                buy_car($_POST['sold_car_name']);
+                                            }
+                                            ?>
+                                        </tr>
+                                    </form>
+                                <?php } ?>
                             </tbody>
                         </table>
                     </div>
