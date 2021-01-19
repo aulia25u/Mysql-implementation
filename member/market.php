@@ -10,6 +10,12 @@ function buy_car($sold_car_name)
     $current_car_stock = (int) mysqli_fetch_assoc(mysqli_query($con, "SELECT car_stock FROM car_stock WHERE car_name='$sold_car_name'"))[0];
     $current_car_stock--;
     mysqli_query($con, "UPDATE car_stock SET car_stock='$current_car_stock' WHERE car_name='$sold_car_name'");
+?>
+    <script type="text/javascript">
+        alert("successful car purchase");
+        window.location = "market.php";
+    </script>
+<?php
 }
 ?>
 <!DOCTYPE html>
@@ -108,10 +114,7 @@ function buy_car($sold_car_name)
     </div>
     <!-- End of Main Content -->
 
-    <?php
-    //include auth_session.php file on all user panel pages
-    include("dashboard-footer.php");
-    ?>
+
 
 </body>
 
