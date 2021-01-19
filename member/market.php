@@ -91,7 +91,9 @@ function buy_car($sold_car_name)
                                             <td><?= $row['out_date'] ?></td>
                                             <td>
                                                 <center>
-                                                    <button type="submit" value="true" name="btn_buy_car">Buy</button>
+                                                    <?= ' <a href=https://www.google.com/search?tbm=isch&q=' . $row['car_manifacture'] . '+' . $row['car_name'] . ' target="_blank
+                                                    ">View</a>'; ?>
+                                                    <button class="btn-success ml-3" type="submit" value="true" name="btn_buy_car">Buy</button>
                                                 </center>
                                             </td>
                                             <?php
@@ -114,7 +116,10 @@ function buy_car($sold_car_name)
     </div>
     <!-- End of Main Content -->
 
-
+    <?php
+    //include auth_session.php file on all user panel pages
+    include("dashboard-market.php");
+    ?>
 
 </body>
 
