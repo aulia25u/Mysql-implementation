@@ -51,8 +51,7 @@ include("../db.php");
                         <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                             <thead>
                                 <tr>
-                                    <th>No</th>
-                                    <th>Buyer</th>
+                                    <th>Customer</th>
                                     <th>Type</th>
                                     <th>Brand</th>
                                     <th>Unit</th>
@@ -67,7 +66,6 @@ include("../db.php");
                                 while ($row = mysqli_fetch_assoc($result)) {
 
                                     echo '<tr>
-                                            <td>' . $row['history_id'] . '</td>
                                             <td>' . $row['username'] . '</td>
                                             <td>' . $row['car_name'] . '</td>
                                             <td>' . $row['car_manifacture'] . '</td>              

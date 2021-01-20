@@ -167,6 +167,7 @@ array_pop($transactions);
                         <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                             <thead>
                                 <tr>
+                                    <th>Customer</th>
                                     <th>Car Name</th>
                                     <th>Car Manifacture</th>
                                     <th>Unit</th>
@@ -178,6 +179,7 @@ array_pop($transactions);
                                 <?php
                                 foreach ($transactions as $transaction)
                                     echo '<tr>
+                                            <td>' . $transaction['username'] . '</td>
                                             <td>' . $transaction['car_name'] . '</td>
                                             <td>' . $transaction['car_manifacture'] . '</td>
                                             <td>' . $transaction['total_carbuy'] . '</td>
