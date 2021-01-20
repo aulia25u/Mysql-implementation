@@ -2,21 +2,36 @@
 //include auth_session.php file on all user panel pages
 include("../auth_session.php");
 include("member_auth.php");
-
-function buy_car($sold_car_name)
+function buy_car($sold_car)
 {
     include("../db.php");
-    $sold_car_name = $_POST['sold_car_name'];
-    $current_car_stock = (int) mysqli_fetch_assoc(mysqli_query($con, "SELECT car_stock FROM car_stock WHERE car_name='$sold_car_name'"))[0];
+    $sold_car_name = $sold_car['name'];
+    $current_car_stock = (int) mysqli_fetch_assoc(mysqli_query($con, "SELECT car_stock FROM car_stock WHERE car_name='$sold_car_name'"))['car_stock'];
     $current_car_stock--;
-    mysqli_query($con, "UPDATE car_stock SET car_stock='$current_car_stock' WHERE car_name='$sold_car_name'");
-?>
-    <script type="text/javascript">
-        alert("successful car purchase");
-        window.location = "market.php";
-    </script>
-<?php
+    if (mysqli_query($con, "UPDATE car_stock SET car_stock='$current_car_stock' WHERE car_name='$sold_car_name'"))
+        return [
+            'status' => true,
+            'info' => $sold_car,
+        ];
+    else return [
+        'status' => false,
+        'info' => $sold_car,
+    ];
 }
+
+function record_transaction($sold_car)
+{
+    include("../db.php");
+
+    $current_active_user = $_SESSION['username'];
+    $user_email = mysqli_fetch_assoc(mysqli_query($con, "SELECT email FROM users WHERE username='$current_active_user'"))['email'];
+    $sold_car_name = $sold_car['name'];
+    $sold_car_manifacture = $sold_car['manifacture'];
+    $sold_car_price = (int) $sold_car['price'];
+
+    return mysqli_query($con, "INSERT INTO transaction_history (username, user_email, car_name, car_manifacture, car_price, total_carbuy) VALUES ('$current_active_user','$user_email','$sold_car_name','$sold_car_manifacture',$sold_car_price,1)");
+}
+
 ?>
 <!DOCTYPE html>
 
@@ -53,9 +68,6 @@ function buy_car($sold_car_name)
 
         <!-- Begin Page Content -->
         <div class="container-fluid">
-
-
-
             <div class="card shadow mb-4">
 
                 <div class="card-header py-3">
@@ -82,6 +94,8 @@ function buy_car($sold_car_name)
                                 while ($row = mysqli_fetch_assoc($result)) { ?>
                                     <form action="" method="post">
                                         <input type="hidden" name="sold_car_name" value="<?= $row['car_name'] ?>">
+                                        <input type="hidden" name="sold_car_manifacture" value="<?= $row['car_manifacture'] ?>">
+                                        <input type="hidden" name="sold_car_price" value="<?= $row['car_price'] ?>">
                                         <tr>
                                             <td><?= $row['car_name'] ?></td>
                                             <td><?= $row['car_manifacture'] ?></td>
@@ -93,12 +107,31 @@ function buy_car($sold_car_name)
                                                 <center>
                                                     <?= ' <a href=https://www.google.com/search?tbm=isch&q=' . $row['car_manifacture'] . '+' . $row['car_name'] . ' target="_blank
                                                     ">View</a>'; ?>
-                                                    <button class="btn-success ml-3" type="submit" value="true" name="btn_buy_car">Buy</button>
+                                                    <button class="btn-success ml-3" <?php if ($row['car_stock'] == 0) echo 'disabled style="opacity:0.3;"' ?> type="submit" value="true" name="btn_buy_car">Buy</button>
                                                 </center>
                                             </td>
                                             <?php
                                             if (isset($_POST['btn_buy_car'])) {
-                                                buy_car($_POST['sold_car_name']);
+
+                                                $sold_car = buy_car([
+                                                    'name' => $_POST['sold_car_name'],
+                                                    'manifacture' => $_POST['sold_car_manifacture'],
+                                                    'price' => $_POST['sold_car_price'],
+                                                ]);
+
+                                                if ($sold_car['status']) {
+                                                    if (record_transaction($sold_car['info']))
+                                                        echo '<script type="text/javascript">
+                                                            alert("successful car purchase");
+                                                            window.location = "market.php";
+                                                        </script>';
+                                                } else {
+                                                    echo '<script type="text/javascript">
+                                                            alert("transaction failed");
+                                                            window.location = "market.php";
+                                                        </script>';
+                                                }
+                                                unset($_POST['btn_buy_car']);
                                             }
                                             ?>
                                         </tr>
