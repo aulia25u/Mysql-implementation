@@ -48,16 +48,16 @@ $result = mysqli_query($con, $query);
             <div class="row">
                 <div class="card mb-3" style="max-width: 900px;">
                     <div class="row no-gutters">
-                        <div class="col-md-4 ml-4 mb-4 mt-3">
+                        <!-- <div class="col-md-4 ml-4 mb-4 mt-3">
                             <br>
                             <img src="../images/img-01.png" class="card-img">
-                        </div>
-                        <div class="col-md-16 mt-3 mb-3 ml-0">
+                        </div> -->
+                        <div class="col-md-16 mt-3 mb-2 ml-0">
                             <div class="card-body">
                                 <?php
                                 while ($row = mysqli_fetch_assoc($result)) {
                                     echo '
-                                    <h5 class="card-title"><b>' . $row['admin_name'] . '</b></h5>
+                                    <h5 class="card-title ml-2"><b>' . $row['admin_name'] . '</b></h5>
                                     <hr class="sidebar-divider">
                                     <p class="card-text"><pre> Email        : ' . $row['email'] . '</pre></p>
                                     <p class="card-text"><pre> Gender       : ' . $row['admin_gender'] . '</pre></p>

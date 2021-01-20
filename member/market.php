@@ -6,9 +6,10 @@ function buy_car($sold_car)
 {
     include("../db.php");
     $sold_car_name = $sold_car['name'];
-    $current_car_stock = (int) mysqli_fetch_assoc(mysqli_query($con, "SELECT car_stock FROM car_stock WHERE car_name='$sold_car_name'"))['car_stock'];
+    $current_car_stock = (int) mysqli_fetch_assoc(mysqli_query($con, "SELECT car_stock FROM car_description WHERE car_name='$sold_car_name'"))['car_stock'];
     $current_car_stock--;
-    if (mysqli_query($con, "UPDATE car_stock SET car_stock='$current_car_stock' WHERE car_name='$sold_car_name'"))
+    $date = date('y.m.d h:i:s');
+    if (mysqli_query($con, "UPDATE car_description SET car_stock='$current_car_stock', car_sale='$date' WHERE car_name='$sold_car_name'"))
         return [
             'status' => true,
             'info' => $sold_car,
@@ -89,7 +90,7 @@ function record_transaction($sold_car)
                             </thead>
                             <tbody>
                                 <?php
-                                $query    = "SELECT * FROM car_description INNER JOIN car_stock ON car_description.car_name=car_stock.car_name";
+                                $query    = "SELECT * FROM car_description";
                                 $result = mysqli_query($con, $query);
                                 while ($row = mysqli_fetch_assoc($result)) { ?>
                                     <form action="" method="post">
@@ -102,7 +103,7 @@ function record_transaction($sold_car)
                                             <td><?= $row['car_production_date'] ?></td>
                                             <td>Rp. <?= number_format($row['car_price']) ?></td>
                                             <td><?= $row['car_stock'] ?></td>
-                                            <td><?= $row['out_date'] ?></td>
+                                            <td><?= $row['car_sale'] ?></td>
                                             <td>
                                                 <center>
                                                     <?= ' <a href=https://www.google.com/search?tbm=isch&q=' . $row['car_manifacture'] . '+' . $row['car_name'] . ' target="_blank

@@ -71,7 +71,7 @@ array_pop($transactions);
                                             <td>' . $transaction['car_name'] . '</td>
                                             <td>' . $transaction['car_manifacture'] . '</td>
                                             <td>' . $transaction['total_carbuy'] . '</td>
-                                            <td>' . $transaction['car_price'] . '</td>
+                                            <td>Rp. ' . number_format($transaction['car_price']) . '</td>
                                             <td>' . $transaction['transaction_date'] . '</td>
                                         </tr>';
                                 ?>

@@ -42,40 +42,35 @@ include("admin_auth.php");
 
             <!-- Content Row -->
             <div class="row ml-1 col-20">
-                <form>
+                <form method="post" action="post-car.php" enctype="multipart/form-data">
                     <div class="form-row ">
                         <div class="form-group col-md-6">
                             <label for="inputEmail4">Car Name</label>
-                            <input type="text" class="form-control" id="carname">
+                            <input type="text" class="form-control" id="carname" name="carname">
                         </div>
                         <div class="form-group col-md-6">
                             <label for="inputPassword4">Manifacture</label>
-                            <input type="text" class="form-control" id="manifacture">
+                            <input type="text" class="form-control" id="manifacture" name="manifacture">
                         </div>
                     </div>
                     <div class="form-row ">
                         <div class="form-group col-md-6">
                             <label for="inputEmail4">Production Date</label>
-                            <input class="form-control" id="date" name="date" placeholder="YYYY/MM/DD" />
+                            <input type="date" class="form-control" id="date" placeholder="YYYY" name="pdate">
                         </div>
                         <div class="form-group col-md-6">
                             <label for="inputprice">Price</label>
-                            <input type="text" class="form-control" id="inputprice">
+                            <input type="text" class="form-control" id="inputprice" name="price">
                         </div>
                     </div>
 
                     <div class="form-row">
                         <div class="form-group col-md-6">
-                            <label for="datearrived">Car Arrived</label>
-                            <input type="text" class="form-control" id="datearrived" placeholder="YYYY/MM/DD">
-                        </div>
-
-                        <div class="form-group col-md-6">
                             <label for="inputunit">Unit</label>
-                            <input type="text" class="form-control" id="inputunit">
+                            <input type="text" class="form-control" id="inputunit" name="unit">
                         </div>
                     </div>
-                    <button type="submit" class="btn btn-primary mt-3">Submit</button>
+                    <button type="submit" name="submit" class="btn btn-primary mt-3">Submit</button>
                 </form>
             </div>
         </div>

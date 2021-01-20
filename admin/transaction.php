@@ -74,7 +74,7 @@ include("../db.php");
                                             <td>' . $row['car_name'] . '</td>
                                             <td>' . $row['car_manifacture'] . '</td>              
                                             <td>' . $row['total_carbuy'] . '</td>                     
-                                            <td>' . $row['car_price'] . '</td>                    
+                                            <td>Rp. ' . number_format($row['car_price']) . '</td>                    
                                             <td>' . $row['transaction_date'] . '</td>
                                         </tr>';
                                 }
