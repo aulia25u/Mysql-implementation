@@ -5,7 +5,7 @@ include("admin_auth.php");
 include('../db.php');
 
 $current_active_user = $_SESSION["username"];
-$query    = "SELECT * FROM admins INNER JOIN admin_description ON admins.id=admin_description.id WHERE username='$current_active_user'";
+$query = "SELECT * FROM admins INNER JOIN admin_description ON admins.id=admin_description.id WHERE username='$current_active_user'";
 $result = mysqli_query($con, $query);
 
 ?>

@@ -48,8 +48,7 @@
                     $password = stripslashes($_REQUEST['password']);
                     $password = mysqli_real_escape_string($con, $password);
                     // Check user is exist in the database
-                    $query    = "SELECT * FROM `admins` WHERE username='$username'
-                     AND password='" . md5($password) . "'";
+                    $query    = "SELECT * FROM `admins` WHERE username='$username' AND password='" . md5($password) . "'";
                     $result = mysqli_query($con, $query) or die($mysqli->error);
                     $rows = mysqli_num_rows($result);
                     if ($rows == 1) {

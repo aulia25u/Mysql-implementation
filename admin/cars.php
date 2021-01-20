@@ -84,7 +84,6 @@ include("../db.php");
     <!-- End of Main Content -->
 
     <?php
-    //include auth_session.php file on all user panel pages
     include("admin-footer.php");
     ?>
 
