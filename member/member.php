@@ -101,9 +101,15 @@ array_pop($transactions);
                             <div class="row no-gutters align-items-center">
                                 <div class="col mr-2">
                                     <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
-                                        My transaction</div>
+                                        Garage Values</div>
                                     <div class="h5 mb-0 font-weight-bold text-gray-800">
-                                        <?= count($transactions) . " Transaction"; ?>
+                                        <?php
+                                        $car_prices = array_map(function ($transaction) {
+                                            return $transaction['car_price'];
+                                        }, $transactions);
+                                        $car_price_sum = array_sum($car_prices);
+                                        echo 'Rp. ' . number_format($car_price_sum);
+                                        ?>
                                     </div>
                                 </div>
                                 <div class="col-auto">

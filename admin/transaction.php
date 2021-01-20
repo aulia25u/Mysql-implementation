@@ -65,8 +65,6 @@ include("../db.php");
                                 $query = "SELECT * FROM transaction_history";
                                 $result = mysqli_query($con, $query);
                                 while ($row = mysqli_fetch_assoc($result)) {
-                                    $query1 = "SELECT * FROM car_description INNER JOIN car_stock ON car_description.car_name=car_stock.car_name WHERE car_name='$row[car_name]'";
-                                    $result1 = mysqli_query($con, $query1);
 
                                     echo '<tr>
                                             <td>' . $row['history_id'] . '</td>
