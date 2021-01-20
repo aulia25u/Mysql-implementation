@@ -4,7 +4,6 @@ include("../auth_session.php");
 include("member_auth.php");
 ?>
 
-
 <!DOCTYPE html>
 
 <head>
@@ -69,12 +68,12 @@ include("member_auth.php");
                         <label for="inputAddress">Address</label>
                         <input type="text" class="form-control" id="inputAddress" name="address" required>
                     </div>
-                    <div class="form-row">
+                    <!-- <div class="form-row">
                         <div class="form-group ml-2">
                             <label for="inputState">Profile Picture</label>
                             <input type="file" class="form-control-file" id="photo" name="image" onchange="PreviewImage();">
                         </div>
-                    </div>
+                    </div> -->
                     <button type="submit" name="submit" class="btn btn-primary mt-3">Submit</button>
 
                 </form>
@@ -83,12 +82,8 @@ include("member_auth.php");
         </div>
     </div>
 
-
-
     <!-- End of Content Wrapper -->
-
     <?php
-    //include auth_session.php file on all user panel pages
     include("dashboard-footer.php");
     ?>
 
