@@ -55,7 +55,18 @@ array_pop($transactions);
                                 <div class="col mr-2">
                                     <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
                                         My Car Brands</div>
-                                    <div class="h5 mb-0 font-weight-bold text-gray-800">$Brand</div>
+                                    <div class="h5 mb-0 font-weight-bold text-gray-800">
+                                        <?php
+                                        // get all cars brand
+                                        $car_brands = array_map(function ($transaction) {
+                                            return $transaction['car_name'];
+                                        }, $transactions);
+                                        // remove duplicate cars brand
+                                        $car_brands = array_unique($car_brands);
+
+                                        echo count($car_brands) . ' Brands';
+                                        ?>
+                                    </div>
                                 </div>
                                 <div class="col-auto">
                                     <i class="fas fas fa-car fa-2x text-dark-300"></i>
