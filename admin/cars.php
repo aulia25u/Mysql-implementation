@@ -58,7 +58,7 @@ include("../db.php");
                             </thead>
                             <tbody>
                                 <?php
-                                $query    = "SELECT * FROM car_description INNER JOIN car_stock ON car_description.car_name=car_stock.car_name";
+                                $query    = "SELECT * FROM car_description";
                                 $result = mysqli_query($con, $query);
                                 while ($row = mysqli_fetch_assoc($result)) {
                                     echo '<tr>
@@ -67,7 +67,7 @@ include("../db.php");
                                     <td>' . $row['car_production_date'] . '</td>
                                     <td>Rp. ' . number_format($row['car_price']) . '</td>
                                     <td>' . $row['car_stock'] . '</td>
-                                    <td>' . $row['out_date'] . '</td>
+                                    <td>' . $row['car_sale'] . '</td>
                                 </tr>';
                                 }
                                 ?>

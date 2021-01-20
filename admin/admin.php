@@ -15,7 +15,7 @@ $result1 = mysqli_query($con, $brands);
 $num_brand = mysqli_num_rows($result1);
 
 // Get All Unit of Cars 
-$units = "SELECT * FROM car_stock";
+$units = "SELECT * FROM car_description";
 $result2 = mysqli_query($con, $units);
 
 $unit = 0;

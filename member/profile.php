@@ -52,12 +52,12 @@ $result = mysqli_query($con, $query);
                             <br>
                             <img src="../images/img-01.png" class="card-img">
                         </div> -->
-                        <div class="col-md-16 mt-3 mb-3 ml-0">
+                        <div class="col-md-16 mt-3 mb-2 ml-0">
                             <div class="card-body">
                                 <?php
                                 while ($row = mysqli_fetch_assoc($result)) {
                                     echo '
-                                    <h5 class="card-title"><b>' . $row['user_name'] . '</b></h5>
+                                    <h5 class="card-title ml-2"><b>' . $row['user_name'] . '</b></h5>
                                     <hr class="sidebar-divider">
                                     <p class="card-text"><pre> Email        : ' . $row['email'] . '</pre></p>
                                     <p class="card-text"><pre> Gender       : ' . $row['user_gender'] . '</pre></p>
