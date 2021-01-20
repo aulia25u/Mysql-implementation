@@ -4,21 +4,11 @@ include("../auth_session.php");
 include("../db.php");
 include("member_auth.php");
 
-// Get All Unit member have
 $current_active_user = $_SESSION["username"];
-$users    = "SELECT * FROM transaction_history WHERE username='$current_active_user' ";
-$result1 = mysqli_query($con, $users);
-
-$unit = 0;
-while ($num = mysqli_fetch_assoc($result1)) {
-    $unit += $num['total_carbuy'];
+$mysqli_result = mysqli_query($con, "SELECT * FROM transaction_history WHERE username='$current_active_user'");
+while ($transactions[] = mysqli_fetch_assoc($mysqli_result)) {
 }
-
-// Get All Unit member have
-$current_active_user = $_SESSION["username"];
-$users    = "SELECT * FROM transaction_history WHERE username='$current_active_user' ";
-$result2 = mysqli_query($con, $users);
-$num_trans = mysqli_num_rows($result2);
+array_pop($transactions);
 
 ?>
 <!DOCTYPE html>
@@ -83,7 +73,7 @@ $num_trans = mysqli_num_rows($result2);
                                 <div class="col mr-2">
                                     <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
                                         My Total Cars</div>
-                                    <div class="h5 mb-0 font-weight-bold text-gray-800"><?= $unit ?> Unit</div>
+                                    <div class="h5 mb-0 font-weight-bold text-gray-800"><?= count($transactions) ?> Unit</div>
                                 </div>
                                 <div class="col-auto">
                                     <i class="fas fa-car-side fa-2x text-dark-300"></i>
@@ -101,13 +91,9 @@ $num_trans = mysqli_num_rows($result2);
                                 <div class="col mr-2">
                                     <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
                                         My transaction</div>
-                                    <div class="h5 mb-0 font-weight-bold text-gray-800"><?php
-                                                                                        if ($num_trans == 0) {
-                                                                                            echo "0 Transaction";
-                                                                                        } else {
-                                                                                            echo "$num_trans Transaction";
-                                                                                        }
-                                                                                        ?> </div>
+                                    <div class="h5 mb-0 font-weight-bold text-gray-800">
+                                        <?= count($transactions) . " Transaction"; ?>
+                                    </div>
                                 </div>
                                 <div class="col-auto">
                                     <i class="fas fa-dollar-sign fa-2x text-dark-300"></i>
@@ -117,7 +103,7 @@ $num_trans = mysqli_num_rows($result2);
                     </div>
                 </div>
 
-                <!-- Total User Card -->
+                <!-- Active user -->
                 <div class="col-xl-3 col-md-6 mb-4">
                     <div class="card border-left-info shadow h-100 py-2">
                         <div class="card-body">
@@ -137,6 +123,7 @@ $num_trans = mysqli_num_rows($result2);
                     </div>
                 </div>
             </div>
+
             <!-- DataTales Example -->
             <div class="card shadow mb-4">
                 <div class="card-header py-3">
@@ -152,25 +139,18 @@ $num_trans = mysqli_num_rows($result2);
                                     <th>Unit</th>
                                     <th>Total Price</th>
                                     <th>Transaction Date</th>
-
                                 </tr>
                             </thead>
                             <tbody>
                                 <?php
-                                $current_active_user = $_SESSION["username"];
-                                $query    = "SELECT * FROM transaction_history WHERE username='$current_active_user' ";
-
-                                $result = mysqli_query($con, $query);
-                                while ($row = mysqli_fetch_assoc($result)) {
+                                foreach ($transactions as $transaction)
                                     echo '<tr>
-                                    <td>' . $row['car_name'] . '</td>
-                                    <td>$Car Manifacture</td>
-                                    <td>' . $row['total_carbuy'] . '</td>
-                                    <td>$Total Price</td>
-                                    <td>' . $row['transaction_date'] . '</td>
-                                    
-                                </tr>';
-                                }
+                                            <td>' . $transaction['car_name'] . '</td>
+                                            <td>' . $transaction['car_manifacture'] . '</td>
+                                            <td>' . $transaction['total_carbuy'] . '</td>
+                                            <td>' . $transaction['car_price'] . '</td>
+                                            <td>' . $transaction['transaction_date'] . '</td>
+                                        </tr>';
                                 ?>
                             </tbody>
                         </table>

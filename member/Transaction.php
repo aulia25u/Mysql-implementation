@@ -3,6 +3,13 @@
 include("../auth_session.php");
 include("../db.php");
 include("member_auth.php");
+
+$current_active_user = $_SESSION["username"];
+$mysqli_result = mysqli_query($con, "SELECT * FROM transaction_history WHERE username='$current_active_user'");
+while ($transactions[] = mysqli_fetch_assoc($mysqli_result)) {
+}
+array_pop($transactions);
+
 ?>
 <!DOCTYPE html>
 
@@ -59,20 +66,14 @@ include("member_auth.php");
                             </thead>
                             <tbody>
                                 <?php
-                                $current_active_user = $_SESSION["username"];
-                                $query    = "SELECT * FROM transaction_history WHERE username='$current_active_user' ";
-
-                                $result = mysqli_query($con, $query);
-                                while ($row = mysqli_fetch_assoc($result)) {
+                                foreach ($transactions as $transaction)
                                     echo '<tr>
-                                    <td>' . $row['car_name'] . '</td>
-                                    <td>$Car Manifacture</td>
-                                    <td>' . $row['total_carbuy'] . '</td>
-                                    <td>$Total Price</td>
-                                    <td>' . $row['transaction_date'] . '</td>
-                                    
-                                </tr>';
-                                }
+                                            <td>' . $transaction['car_name'] . '</td>
+                                            <td>' . $transaction['car_manifacture'] . '</td>
+                                            <td>' . $transaction['total_carbuy'] . '</td>
+                                            <td>' . $transaction['car_price'] . '</td>
+                                            <td>' . $transaction['transaction_date'] . '</td>
+                                        </tr>';
                                 ?>
                             </tbody>
                         </table>
