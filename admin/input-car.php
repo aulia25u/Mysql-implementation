@@ -2,6 +2,7 @@
 //include auth_session.php file on all user panel pages
 include("../auth_session.php");
 include("admin_auth.php");
+$current_active_user = $_SESSION["username"];
 ?>
 
 <!DOCTYPE html>
@@ -43,6 +44,7 @@ include("admin_auth.php");
             <!-- Content Row -->
             <div class="row ml-1 col-20">
                 <form method="post" action="post-car.php" enctype="multipart/form-data">
+                    <input type="hidden" name="admin" value="<?= $current_active_user ?>" />
                     <div class="form-row ">
                         <div class="form-group col-md-6">
                             <label for="inputEmail4">Car Name</label>

@@ -11,7 +11,8 @@ if (isset($_POST['submit'])) {
     $pdate = $_POST['pdate'];
     $price = $_POST['price'];
     $unit = $_POST['unit'];
-    $query = "INSERT INTO car_description SET car_name = '$carname', car_manifacture = '$manifacture', car_production_date = '$pdate' , car_price  = '$price' , car_stock = '$unit'";
+    $admin = $_POST['admin'];
+    $query = "INSERT INTO car_description SET car_name = '$carname', car_manifacture = '$manifacture', car_production_date = '$pdate' , car_price  = '$price' , car_stock = '$unit', input_admin = '$admin' ";
     $result = mysqli_query($con, $query) or die(mysqli_error($con));
 ?>
     <script type="text/javascript">

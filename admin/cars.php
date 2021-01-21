@@ -48,6 +48,7 @@ include("../db.php");
                         <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                             <thead>
                                 <tr>
+                                    <th>Admin</th>
                                     <th>Name</th>
                                     <th>Manifacture</th>
                                     <th>Production</th>
@@ -62,6 +63,7 @@ include("../db.php");
                                 $result = mysqli_query($con, $query);
                                 while ($row = mysqli_fetch_assoc($result)) {
                                     echo '<tr>
+                                    <td>' . $row['input_admin'] . '</td>
                                     <td>' . $row['car_name'] . '</td>
                                     <td>' . $row['car_manifacture'] . '</td>
                                     <td>' . $row['car_production_date'] . '</td>
