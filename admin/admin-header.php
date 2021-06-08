@@ -24,48 +24,45 @@
                     <span>Dashboard</span></a>
             </li>
 
-            <!-- Nav Item - Charts -->
-            <li class="nav-item">
-                <a class="nav-link" href="https://sg05.rapidwhm.com:2083/cpsess2669348027/3rdparty/phpMyAdmin/" target="_blank">
-                    <i class="fas fa-fw fa-database"></i>
-                    <span>DataBase</span></a>
-            </li>
-
             <!-- Divider -->
             <hr class="sidebar-divider">
 
             <!-- Heading -->
             <div class="sidebar-heading">
-                Management
+               Game Management
             </div>
+
+
 
             <!-- Nav Item - Pages Collapse Menu -->
             <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseTwo">
-                    <i class="fas fa-fw fa-users"></i>
-                    <span>Member List</span>
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                    <i class="fas fa-fw fa-user-edit"></i>
+                    <span>Players</span>
                 </a>
-                <div id="collapseOne" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Member Components:</h6>
-                        <a class="collapse-item" href="member-all.php">Member All</a>
-                        <a class="collapse-item" href="member.php">Member Profile</a>
+                        <h6 class="collapse-header">Players Components:</h6>
+                        <a class="collapse-item" href="register.php">Registers</a>
+                        <a class="collapse-item" href="update-cash.php">Update Cash</a>
+                        <a class="collapse-item" href="accounts.php">View Account</a>
+                        <a class="collapse-item" href="characters.php">View Characters</a>
                     </div>
                 </div>
             </li>
 
+            
             <!-- Nav Item - Pages Collapse Menu -->
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
-                    <i class="fas fa-fw fa-car"></i>
-                    <span>Cars Panel</span>
+                    <i class="fas fa-fw fa-university"></i>
+                    <span>Guilds</span>
                 </a>
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Cars Components:</h6>
-                        <a class="collapse-item" href="cars.php">View Cars</a>
-                        <a class="collapse-item" href="input-car.php">Input Cars</a>
-                        <a class="collapse-item" href="transaction.php">Transaction</a>
+                        <h6 class="collapse-header">Guilds Components:</h6>
+                        <a class="collapse-item" href="">View Guilds</a>
+                        <a class="collapse-item" href="">Set Point/Coin</a>
                     </div>
                 </div>
             </li>

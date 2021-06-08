@@ -2,7 +2,10 @@
 <footer class="sticky-footer bg-white">
     <div class="container my-auto">
         <div class="copyright text-center my-auto">
-            <b><span>Copyright &copy; DBD Crew Bukan Kaleng2 V1</span></b>
+            <b><span>
+            <a href="https://github.com/auliatenshi" target=“_blank” class="text-secondary">
+				<strong class="text-muted">Powered by DBD Crew Bukan Kaleng2 V1</strong>
+			</a></span></b>
         </div>
     </div>
 </footer>
