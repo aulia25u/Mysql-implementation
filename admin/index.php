@@ -2,11 +2,28 @@
 //include auth_session.php file on all user panel pages
 include("../auth_session.php");
 include("admin_auth.php");
+
+if(!$_SESSION['auth']) {
+    header('location:../index.php');
+  }
+  else {
+    $currentTime = time();
+    if($currentTime > $_SESSION['expire']) {
+      session_unset();
+      session_destroy();
+      echo '
+        <script type="text/javascript">
+            alert("Session Is Over Please Login Again.");
+            window.location = "../index.php";
+        </script>
+      ';
+
+    }
+    else {
 ?>
 <!DOCTYPE html>
 
 <head>
-
     <title>Dashboard - Admin area</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -66,8 +83,10 @@ include("admin_auth.php");
         })
     </script>
     <script src="../js/main.js"></script>
-
-
 </body>
 
 </html>
+<?php
+    }
+  }
+?>

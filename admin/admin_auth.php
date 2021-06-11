@@ -6,5 +6,5 @@ $result = mysqli_query($con, $query);
 $rows = mysqli_num_rows($result);
 if ($rows == 1) {
 } else {
-    header("location:403.php");
+    header("location:../403.php");
 }

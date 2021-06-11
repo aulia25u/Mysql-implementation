@@ -12,7 +12,7 @@ include("../db.php");
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="icon" type="image/png" href="../images/icons/favicon.ico" />
-    <title>Members Table</title>
+    <title>View Characters</title>
 
     <!-- Custom fonts for this template -->
     <link href="../vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -41,29 +41,40 @@ include("../db.php");
         <div class="container-fluid">
             <div class="card shadow mb-4">
                 <div class="card-header py-3">
-                    <h6 class="m-0 font-weight-bold text-primary">Members Table All</h6>
+                    <h6 class="m-0 font-weight-bold text-primary">View Characters</h6>
                 </div>
                 <div class="card-body">
                     <div class="table-responsive">
                         <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                             <thead>
                                 <tr>
-                                    <th>User Id</th>
-                                    <th>Username</th>
-                                    <th>Email</th>
-                                    <th>Register Date</th>
+                                    <th>No</th>
+                                    <th>Character Name</th>
+                                    <th>Level Code</th>
+                                    <th>Account Name</th>
+                                    <th>Class</th>
+                                    <th>Create Date</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <?php
-                                $query    = "SELECT * FROM users";
-                                $result = mysqli_query($con, $query);
-                                while ($row = mysqli_fetch_assoc($result)) {
+                            <?php
+                                $query  = "SELECT * FROM dbo.Characters";
+                                $result = sqlsrv_query($connn, $query);
+                                $i = 1;
+                                while ($row = sqlsrv_fetch_array($result)) {
+                                    if($row["AccountLevelCode"] == 99){
+                                        $row["accountlevel1"]="<font color=Green>Admin</font>";
+                                    } 
+                                    else{
+                                        $row["accountlevel1"]="Player";
+                                    }
                                     echo '<tr>
-                                    <td>' . $row['id'] . '</td>
-                                    <td>' . $row['username'] . '</td>
-                                    <td>' . $row['email'] . '</td>
-                                    <td>' . $row['create_datetime'] . '</td>
+                                    <td>' . $i++ .'</td>
+                                    <td>' . $row['CharacterName'] . '</td>
+                                    <td>' . $row['accountlevel1'] . '</td>
+                                    <td>' . $row['AccountName'] . '</td>
+                                    <td>' . $row['CharacterClassCode'] . '</td>
+                                    <td>' . $row['CreateDate']->format('d/m/Y'). '</td>
                                 </tr>';
                                 }
                                 ?>
@@ -80,7 +91,6 @@ include("../db.php");
     <!-- End of Main Content -->
 
     <?php
-    //include auth_session.php file on all user panel pages
     include("admin-footer.php");
     ?>
 

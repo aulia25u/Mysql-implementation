@@ -4,39 +4,31 @@ include("../auth_session.php");
 include("../db.php");
 include("admin_auth.php");
 
-// Get All Row Users
-$users    = "SELECT * FROM users";
-$result = mysqli_query($con, $users);
-$num_user = mysqli_num_rows($result);
+// Gett All User Online
+$online = "SELECT * FROM dbo.DNauth where CertifyingStep = 2";
+$params = array();
+$options =  array( "Scrollable" => SQLSRV_CURSOR_KEYSET );
+$stmt = sqlsrv_query($conn, $online , $params, $options);
+$row_online = sqlsrv_num_rows($stmt);
 
-// Get All Row Car Brands
-$brands    = "SELECT * FROM car_description";
-$result1 = mysqli_query($con, $brands);
-$num_brand = mysqli_num_rows($result1);
+// Gett All Account
+$account = "SELECT AccountID FROM dbo.Accounts";
+$params = array();
+$options =  array( "Scrollable" => SQLSRV_CURSOR_KEYSET );
+$stmt = sqlsrv_query($conn, $account , $params, $options);
+$row_account = sqlsrv_num_rows($stmt);
 
-// Get All Unit of Cars 
-$units = "SELECT * FROM car_description";
-$result2 = mysqli_query($con, $units);
-
-$unit = 0;
-while ($num = mysqli_fetch_assoc($result2)) {
-    $unit += $num['car_stock'];
-}
-
-// Get All Row Transaction
-$totaltrans   = "SELECT * FROM transaction_history";
-$result3 = mysqli_query($con, $totaltrans);
-$num_transaction = mysqli_num_rows($result3);
+// Gett All Characters
+$characters = "SELECT AccountID FROM dbo.Characters";
+$params = array();
+$options =  array( "Scrollable" => SQLSRV_CURSOR_KEYSET );
+$stmt = sqlsrv_query($conn, $characters , $params, $options);
+$row_characters = sqlsrv_num_rows($stmt);
 
 // Get All Row Admins
 $admins    = "SELECT * FROM admins";
 $result4 = mysqli_query($con, $admins);
 $num_admins = mysqli_num_rows($result4);
-
-$mysqli_result = mysqli_query($con, "SELECT * FROM transaction_history ");
-while ($transactions[] = mysqli_fetch_assoc($mysqli_result)) {
-}
-array_pop($transactions);
 
 ?>
 <!DOCTYPE html>
@@ -83,11 +75,11 @@ array_pop($transactions);
                             <div class="row no-gutters align-items-center">
                                 <div class="col mr-2">
                                     <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
-                                        Total Cars</div>
-                                    <div class="h5 mb-0 font-weight-bold text-gray-800"><?= $unit ?> Unit</div>
+                                        Total Online</div>
+                                    <div class="h5 mb-0 font-weight-bold text-gray-800"><?= $row_online ?> Players</div>
                                 </div>
                                 <div class="col-auto">
-                                    <i class="fas fa-car-side fa-2x text-dark-300"></i>
+                                    <i class="fas fa-user fa-2x text-dark-300"></i>
                                 </div>
                             </div>
                         </div>
@@ -101,11 +93,11 @@ array_pop($transactions);
                             <div class="row no-gutters align-items-center">
                                 <div class="col mr-2">
                                     <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
-                                        transaction</div>
-                                    <div class="h5 mb-0 font-weight-bold text-gray-800"><?= $num_transaction ?> Transaction</div>
+                                        Total Users</div>
+                                    <div class="h5 mb-0 font-weight-bold text-gray-800"><?= $row_account ?> Accounts</div>
                                 </div>
                                 <div class="col-auto">
-                                    <i class="fas fa-dollar-sign fa-2x text-dark-300"></i>
+                                    <i class="fas fa-user fa-2x text-dark-300"></i>
                                 </div>
                             </div>
                         </div>
@@ -119,19 +111,12 @@ array_pop($transactions);
                             <div class="row no-gutters align-items-center">
                                 <div class="col mr-2">
                                     <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
-                                        transaction</div>
+                                        Total Characters</div>
                                     <div class="h5 mb-0 font-weight-bold text-gray-800">
-                                        <?php
-                                        $car_prices = array_map(function ($transaction) {
-                                            return $transaction['car_price'];
-                                        }, $transactions);
-                                        $car_price_sum = array_sum($car_prices);
-                                        echo 'Rp. ' . number_format($car_price_sum);
-                                        ?>
-                                    </div>
+                                        <?= $row_characters?> Characters</div>
                                 </div>
                                 <div class="col-auto">
-                                    <i class="fas fa-dollar-sign fa-2x text-dark-300"></i>
+                                    <i class="fas fa-user fa-2x text-dark-300"></i>
                                 </div>
                             </div>
                         </div>
@@ -145,8 +130,8 @@ array_pop($transactions);
                             <div class="row no-gutters align-items-center">
                                 <div class="col mr-2">
                                     <div class="text-xs font-weight-bold text-info text-uppercase mb-1">
-                                        Total User & Admin</div>
-                                    <div class="h5 mb-0 font-weight-bold text-gray-800"><?= $num_user ?> User + <?= $num_admins ?> Admin</div>
+                                        Total Admins</div>
+                                    <div class="h5 mb-0 font-weight-bold text-gray-800"><?=$num_admins ?> Admins</div>
                                 </div>
                                 <div class="col-auto">
                                     <i class="fas fa-user fa-2x text-dark-300"></i>
@@ -160,32 +145,45 @@ array_pop($transactions);
             <!-- DataTales Example -->
             <div class="card shadow mb-4">
                 <div class="card-header py-3">
-                    <h6 class="m-0 font-weight-bold text-primary">ALL Transaction</h6>
+                    <h6 class="m-0 font-weight-bold text-primary">Users Online</h6>
                 </div>
                 <div class="card-body">
                     <div class="table-responsive">
                         <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                             <thead>
                                 <tr>
-                                    <th>Customer</th>
-                                    <th>Car Name</th>
-                                    <th>Car Manifacture</th>
-                                    <th>Unit</th>
-                                    <th>Total Price</th>
-                                    <th>Transaction Date</th>
+                                <th>No</th>
+                                    <th>Character Name</th>
+                                    <th>Access Time</th>
+                                    <th>Account Name</th>
+                                    <th>Account Level</th>
+                                    <th>Status</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <?php
-                                foreach ($transactions as $transaction)
+                                $i = 1;
+                                // Gett All Rows User Online
+                                $online = "SELECT charactername, accesstime, accountlevel, accountname FROM dbo.DNauth where CertifyingStep = 2";
+                                $getUserOnline = sqlsrv_query($conn, $online); 
+                                while ($UsersOnline[] = sqlsrv_fetch_array($getUserOnline)) {
+                                foreach ($UsersOnline as $transaction)
+                                if($transaction["accountlevel"] == 99){
+                                    $transaction["accountlevel1"]="<font color=green>Admin</font>";
+                                } 
+                                else{
+                                    $transaction["accountlevel1"]="<font color=black>Player</font>";
+                                }
+                                $status = "<font color=green>Online</font>";
                                     echo '<tr>
-                                            <td>' . $transaction['username'] . '</td>
-                                            <td>' . $transaction['car_name'] . '</td>
-                                            <td>' . $transaction['car_manifacture'] . '</td>
-                                            <td>' . $transaction['total_carbuy'] . '</td>
-                                            <td>Rp. ' . number_format($transaction['car_price']) . '</td>
-                                            <td>' . $transaction['transaction_date'] . '</td>
+                                            <td>' . $i++ . '</td>
+                                            <td>' . $transaction['charactername'] . '</td>
+                                            <td>' . $transaction['accesstime']->format('d/m/Y H:i:s') . '</td>
+                                            <td>' . $transaction['accountname'] . '</td>
+                                            <td>' . $transaction['accountlevel1'] . '</td>
+                                            <td>' . $status . '</td>
                                         </tr>';
+                                }
                                 ?>
                             </tbody>
                         </table>
