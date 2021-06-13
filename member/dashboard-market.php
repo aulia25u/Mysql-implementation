@@ -48,7 +48,6 @@
 
 <!-- Page level plugins -->
 <script src="../vendor/chart.js/Chart.min.js"></script>
-<script src="../js/demo/datatables-demo.js"></script>
 
 </div>
 </div>

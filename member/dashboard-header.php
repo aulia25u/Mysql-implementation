@@ -6,7 +6,7 @@
                 <div class="sidebar-brand-icon rotate-n-15">
                     <i class="fas fa-address-card"></i>
                 </div>
-                <div class="sidebar-brand-text mx-3">ADMIN<sup></sup></div>
+                <div class="sidebar-brand-text mx-3">Member<sup></sup></div>
             </a>
 
             <!-- Divider -->
@@ -14,61 +14,35 @@
 
             <!-- Heading -->
             <div class="sidebar-heading">
-                Admin Panel
+                Member Panel
             </div>
 
             <!-- Nav Item - Dashboard -->
             <li class="nav-item ">
-                <a class="nav-link" href="admin.php">
+                <a class="nav-link" href="member.php">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Dashboard</span></a>
             </li>
 
-            <!-- Nav Item - Charts -->
-            <li class="nav-item">
-                <a class="nav-link" href="https://sg05.rapidwhm.com:2083/cpsess2669348027/3rdparty/phpMyAdmin/" target="_blank">
-                    <i class="fas fa-fw fa-database"></i>
-                    <span>DataBase</span></a>
-            </li>
 
             <!-- Divider -->
             <hr class="sidebar-divider">
 
-            <!-- Heading -->
             <div class="sidebar-heading">
-                Management
+                Market Panel
             </div>
 
-            <!-- Nav Item - Pages Collapse Menu -->
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseTwo">
-                    <i class="fas fa-fw fa-users"></i>
-                    <span>Member List</span>
-                </a>
-                <div id="collapseOne" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Member Components:</h6>
-                        <a class="collapse-item" href="member-all.php">Member All</a>
-                        <a class="collapse-item" href="member.php">Member Profile</a>
-                    </div>
-                </div>
+            <li class="nav-item ">
+                <a class="nav-link" href="market.php">
+                    <i class="fas fa-fw fa-car"></i>
+                    <span>Car Market</span></a>
+            </li>
+            <li class="nav-item ">
+                <a class="nav-link" href="Transaction.php">
+                    <i class="fas fa-fw fa-shopping-cart"></i>
+                    <span>My Transaction</span></a>
             </li>
 
-            <!-- Nav Item - Pages Collapse Menu -->
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
-                    <i class="fas fa-fw fa-car"></i>
-                    <span>Cars Panel</span>
-                </a>
-                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Cars Components:</h6>
-                        <a class="collapse-item" href="cars.php">View Cars</a>
-                        <a class="collapse-item" href="input-car.php">Input Cars</a>
-                        <a class="collapse-item" href="transaction.php">Transaction</a>
-                    </div>
-                </div>
-            </li>
 
             <!-- Divider -->
             <hr class="sidebar-divider">
@@ -134,10 +108,10 @@
                                 <?php
                                 include('../db.php');
                                 $current_active_user = $_SESSION["username"];
-                                $qname    = "SELECT * FROM admins INNER JOIN admin_description ON admins.id=admin_description.id WHERE username='$current_active_user'";
+                                $qname    = "SELECT * FROM users INNER JOIN user_description ON users.id=user_description.id WHERE username='$current_active_user'";
                                 $rname = mysqli_query($con, $qname);
                                 while ($rowname = mysqli_fetch_assoc($rname)) {
-                                    echo '<span class="mr-2 d-none d-lg-inline text-gray-600 big">' . $rowname['admin_name'] . '</span>';
+                                    echo '<span class="mr-2 d-none d-lg-inline text-gray-600 big">' . $rowname['user_name'] . '</span>';
                                 }
                                 $rows = mysqli_num_rows($rname);
                                 if ($rows == 0) {
